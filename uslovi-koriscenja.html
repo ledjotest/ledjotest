@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AlcoGo - Uslovi korišćenja">
+    <title>Uslovi Korišćenja - AlcoGo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="katalog.css">
+    <style>
+        .terms-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-dark-bg);
+            min-height: calc(100vh - 70px);
+        }
+
+        .terms__container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .terms__title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--color-text);
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .terms__subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.25rem;
+            text-align: center;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .terms__date {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .terms__content {
+            font-family: 'Lato', sans-serif;
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .terms__section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .terms__section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .terms__subsection-title {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .terms__paragraph {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-secondary);
+        }
+
+        .terms__list {
+            margin-left: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-secondary);
+        }
+
+        .terms__list-item {
+            margin-bottom: var(--spacing-xs);
+            list-style-type: disc;
+        }
+
+        .terms__highlight {
+            background-color: rgba(0, 200, 200, 0.1);
+            padding: var(--spacing-md);
+            border-left: 4px solid var(--color-primary);
+            border-radius: 8px;
+            margin: var(--spacing-md) 0;
+        }
+
+        .terms__warning {
+            background-color: rgba(255, 68, 68, 0.1);
+            padding: var(--spacing-md);
+            border-left: 4px solid #FF4444;
+            border-radius: 8px;
+            margin: var(--spacing-md) 0;
+            font-weight: 600;
+        }
+
+        .terms__checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .terms__checklist-item {
+            margin-bottom: var(--spacing-xs);
+            padding-left: var(--spacing-md);
+            position: relative;
+        }
+
+        .terms__checklist-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .terms__contact-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .terms__contact-item {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .terms__contact-label {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        @media (min-width: 768px) {
+            .terms__title {
+                font-size: 3rem;
+            }
+
+            .terms__section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header sa logoom i navigacijom -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Leva strana: Hamburger meni i Logo -->
+                <div class="header__left">
+                    <!-- Mobile menu toggle -->
+                    <button class="header__menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="menu-toggle__line"></span>
+                        <span class="menu-toggle__line"></span>
+                        <span class="menu-toggle__line"></span>
+                    </button>
+                    
+                    <!-- Logo -->
+                    <div class="header__logo">
+                        <a href="index.html" class="logo-link">
+                            <img src="img/logo.png" alt="AlcoGo Logo" class="logo-img">
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Navigacija -->
+                <nav class="header__nav" id="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="index.html" class="nav__link">Početna</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="katalog.html" class="nav__link">Katalog</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="index.html#korpa" class="nav__link">Korpa</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="index.html#kako-funkcionisemo" class="nav__link">Kako Funkcionisemo</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="index.html#recenzije" class="nav__link">Recenzije</a>
+                        </li>
+                    </ul>
+                    <div class="nav__cta">
+                        <a href="index.html#naruci" class="btn btn--primary">NARUCI SADA</a>
+                    </div>
+                    <div class="nav__apps">
+                        <a href="#" class="nav__app-link" onclick="showAppPopup(event)">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&releaseDate=1289520000" alt="Download on the App Store" class="nav__app-img">
+                        </a>
+                        <a href="#" class="nav__app-link" onclick="showAppPopup(event)">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="nav__app-img">
+                        </a>
+                    </div>
+                </nav>
+                
+                <!-- Overlay za zatvaranje menija -->
+                <div class="nav-overlay" id="navOverlay"></div>
+                
+                <!-- Desna strana: Profil ikonica -->
+                <div class="header__right">
+                    <a href="#" class="header__profile-link" aria-label="Profil" onclick="showAccountPopup(event)">
+                        <img src="img/mojprofil.png" alt="Profil" class="header__profile-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Uslovi Korišćenja Section -->
+    <section class="terms-section">
+        <div class="terms__container">
+            <h1 class="terms__title">USLOVI KORIŠĆENJA</h1>
+            <p class="terms__subtitle">AlcoGo - Dostava alkoholnih pića 24/7</p>
+            <p class="terms__date">Datum poslednje izmene: 25. novembar 2025.</p>
+
+            <div class="terms__content">
+                <!-- 1. OPŠTE ODREDBE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">1. OPŠTE ODREDBE</h2>
+                    
+                    <h3 class="terms__subsection-title">1.1 O AlcoGo</h3>
+                    <p class="terms__paragraph">
+                        AlcoGo je servis za brzu dostavu alkoholnih pića na kućnu adresu, dostupan 24 sata dnevno, 7 dana u nedelji. Korišćenjem naših usluga prihvatate ove Uslove korišćenja u potpunosti.
+                    </p>
+
+                    <h3 class="terms__subsection-title">1.2 Pravne informacije</h3>
+                    <div class="terms__contact-info">
+                        <p class="terms__contact-item"><span class="terms__contact-label">AlcoGo</span></p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">Adresa:</span> [Unesite adresu]</p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">PIB:</span> [Unesite PIB]</p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">Matični broj:</span> [Unesite matični broj]</p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">Telefon:</span> [Unesite telefon]</p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">Email:</span> [Unesite email]</p>
+                    </div>
+
+                    <h3 class="terms__subsection-title">1.3 Izmene uslova</h3>
+                    <p class="terms__paragraph">
+                        Zadržavamo pravo da izmenimo ove Uslove. Izmene stupaju na snagu odmah po objavljivanju na našoj platformi.
+                    </p>
+                </div>
+
+                <!-- 2. USLOVI ZA KORIŠĆENJE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">2. USLOVI ZA KORIŠĆENJE</h2>
+                    
+                    <h3 class="terms__subsection-title">2.1 STAROSNA GRANICA - OBAVEZNO ⚠️</h3>
+                    <div class="terms__warning">
+                        <p class="terms__paragraph">U skladu sa zakonima Republike Srbije:</p>
+                        <ul class="terms__checklist">
+                            <li class="terms__checklist-item">Naše usluge mogu koristiti SAMO punoletna lica (18+ godina)</li>
+                            <li class="terms__checklist-item">Pri naručivanju potvrđujete da ste navršili 18 godina</li>
+                            <li class="terms__checklist-item">Pri dostavi MORATE pokazati ličnu kartu, pasoš ili vozačku dozvolu</li>
+                            <li class="terms__checklist-item">Ako ne možete dokazati punoletnost, dostava NEĆE biti izvršena</li>
+                            <li class="terms__checklist-item">Lažno predstavljanje starosti je krivično delo</li>
+                        </ul>
+                        <p class="terms__paragraph" style="margin-top: var(--spacing-sm); font-weight: 600;">Dostavljač je ZAKONSKI OBAVEZAN da proveri identitet!</p>
+                    </div>
+
+                    <h3 class="terms__subsection-title">2.2 Zabrana zloupotrebe</h3>
+                    <p class="terms__paragraph">Zabranjeno je:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Naručivanje za lica mlađa od 18 godina</li>
+                        <li class="terms__list-item">Davanje lažnih podataka</li>
+                        <li class="terms__list-item">Korišćenje usluga u nezakonite svrhe</li>
+                        <li class="terms__list-item">Uznemiravajuće ponašanje prema dostavljačima</li>
+                    </ul>
+                </div>
+
+                <!-- 3. KAKO FUNKCIONIŠE NARUČIVANJE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">3. KAKO FUNKCIONIŠE NARUČIVANJE</h2>
+                    
+                    <h3 class="terms__subsection-title">3.1 Proces porudžbine</h3>
+                    <ol class="terms__list" style="list-style-type: decimal;">
+                        <li class="terms__list-item">Izaberete proizvode na našoj platformi/aplikaciji</li>
+                        <li class="terms__list-item">Kliknete na "Poruči"</li>
+                        <li class="terms__list-item">Ostavite podatke:
+                            <ul class="terms__list" style="margin-top: var(--spacing-xs);">
+                                <li class="terms__list-item">Ime i prezime</li>
+                                <li class="terms__list-item">Broj telefona</li>
+                                <li class="terms__list-item">Adresu dostave</li>
+                            </ul>
+                        </li>
+                        <li class="terms__list-item">Mi vas pozivamo da potvrdimo narudžbinu</li>
+                        <li class="terms__list-item">Dostavljamo vam proizvode</li>
+                    </ol>
+
+                    <h3 class="terms__subsection-title">3.2 Potvrda narudžbine</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Narudžbina je važeća tek nakon našeg telefonskog poziva i potvrde</li>
+                        <li class="terms__list-item">Zadržavamo pravo da odbijemo narudžbinu bez obrazloženja</li>
+                        <li class="terms__list-item">Ako ne odgovorite na poziv, narudžbina se automatski otkazuje</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">3.3 Razlozi za odbijanje</h3>
+                    <p class="terms__paragraph">Možemo odbiti narudžbinu ako:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Proizvod nije dostupan</li>
+                        <li class="terms__list-item">Sumnjamo da je kupac maloletno lice</li>
+                        <li class="terms__list-item">Podaci za dostavu su netačni ili nepotpuni</li>
+                        <li class="terms__list-item">Greška u sistemu</li>
+                        <li class="terms__list-item">Ne odgovarate na telefon</li>
+                    </ul>
+                </div>
+
+                <!-- 4. CENE I PLAĆANJE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">4. CENE I PLAĆANJE</h2>
+                    
+                    <h3 class="terms__subsection-title">4.1 Cene</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Sve cene su u dinarima (RSD) i uključuju PDV</li>
+                        <li class="terms__list-item">Cene mogu da se menjaju bez prethodne najave</li>
+                        <li class="terms__list-item">Cena prikazana u trenutku naručivanja je konačna</li>
+                        <li class="terms__list-item">Troškovi dostave se dodaju na cenu proizvoda i jasno su prikazani</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">4.2 Način plaćanja</h3>
+                    <div class="terms__highlight">
+                        <p class="terms__paragraph" style="font-weight: 600; margin: 0;">PLAĆANJE ISKLJUČIVO POUZEĆEM (gotovina ili kartica kod dostavljača)</p>
+                        <ul class="terms__list" style="margin-top: var(--spacing-sm);">
+                            <li class="terms__list-item">Platite dostavljaču pri preuzimanju</li>
+                            <li class="terms__list-item">Dobijate fiskalni račun</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="terms__subsection-title">4.3 Cena je konačna</h3>
+                    <p class="terms__paragraph">Nema povraćaja novca. Prodaja je konačna.</p>
+                </div>
+
+                <!-- 5. DOSTAVA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">5. DOSTAVA</h2>
+                    
+                    <h3 class="terms__subsection-title">5.1 Zona dostave</h3>
+                    <p class="terms__paragraph">
+                        Dostavljamo 24/7 u zonama koje pokrivamo. Informacije o zonama dostave su dostupne na platformi.
+                    </p>
+
+                    <h3 class="terms__subsection-title">5.2 Vreme dostave</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Vreme dostave je orijentaciono (obično 30-60 minuta)</li>
+                        <li class="terms__list-item">Zavisi od gužve, lokacije i dostupnosti</li>
+                        <li class="terms__list-item">Obavestićemo vas o približnom vremenu</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">5.3 Proces dostave - VAŽNO ⚠️</h3>
+                    <div class="terms__warning">
+                        <p class="terms__paragraph">Kada dostavljač stigne:</p>
+                        <ul class="terms__checklist">
+                            <li class="terms__checklist-item">MORATE pokazati validan identifikacioni dokument (lična karta, pasoš ili vozačka dozvola)</li>
+                            <li class="terms__checklist-item">Dostavljač proverava da li ste punoletni</li>
+                            <li class="terms__checklist-item">Ako možete dokazati punoletnost → preuzimate narudžbinu</li>
+                            <li class="terms__checklist-item">Ako NE možete dokazati → dostava se ODBIJA, troškovi dostave se naplaćuju</li>
+                        </ul>
+                        <p class="terms__paragraph" style="margin-top: var(--spacing-sm); font-weight: 600;">Proverite narudžbinu odmah pri preuzimanju!</p>
+                    </div>
+
+                    <h3 class="terms__subsection-title">5.4 Ako niste kod kuće</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Ako niste dostupni na adresi, pokušaćemo da vas pozovemo</li>
+                        <li class="terms__list-item">Ako ne odgovarate, narudžbina se otkazuje</li>
+                        <li class="terms__list-item">Troškovi dostave se naplaćuju</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">5.5 Netačna adresa</h3>
+                    <p class="terms__paragraph">
+                        Ako je adresa netačna ili nepotpuna, naplaćujemo dodatne troškove ili otkazujemo dostavu. Vi odgovarate za tačnost adrese.
+                    </p>
+                </div>
+
+                <!-- 6. POVRAĆAJ I REKLAMACIJE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">6. POVRAĆAJ I REKLAMACIJE</h2>
+                    
+                    <h3 class="terms__subsection-title">6.1 ❌ NEMA POVRAĆAJA</h3>
+                    <div class="terms__warning">
+                        <p class="terms__paragraph">Prodaja je konačna. Ne prihvatamo povraćaj proizvoda jer:</p>
+                        <ul class="terms__list">
+                            <li class="terms__list-item">Alkoholna pića se konzumiraju odmah po dostavi</li>
+                            <li class="terms__list-item">Higijenski razlozi</li>
+                            <li class="terms__list-item">Priroda proizvoda</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="terms__subsection-title">6.2 ✅ Reklamacije - SAMO u sledećim slučajevima</h3>
+                    <div class="terms__highlight">
+                        <p class="terms__paragraph" style="font-weight: 600; margin-bottom: var(--spacing-sm);">Prihvatamo reklamaciju SAMO ako:</p>
+                        <ul class="terms__checklist">
+                            <li class="terms__checklist-item">Proizvod je fizički oštećen pri dostavi (flaša polomljena, ambalaza uništena)</li>
+                            <li class="terms__checklist-item">Dobili ste pogrešan proizvod</li>
+                            <li class="terms__checklist-item">Rok trajanja je istekao</li>
+                            <li class="terms__checklist-item">Proizvod je neispravan (npr. pokvareno piće)</li>
+                        </ul>
+                        <p class="terms__paragraph" style="margin-top: var(--spacing-md); font-weight: 600;">VAŽNO:</p>
+                        <ul class="terms__list">
+                            <li class="terms__list-item">Reklamacija MORA biti prijavljena ODMAH dostavljaču pre nego što potpišete dokument</li>
+                            <li class="terms__list-item">Nakon što preuzmete i potpišete - NE PRIHVATAMO reklamacije</li>
+                            <li class="terms__list-item">Fotografišite oštećenje odmah</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="terms__subsection-title">6.3 Postupak reklamacije</h3>
+                    <p class="terms__paragraph">Prijavite problem ODMAH dostavljaču ili nas pozovite u roku od 10 minuta: [telefon]</p>
+                    <p class="terms__paragraph">Fotografišite problem</p>
+                    <p class="terms__paragraph">Mi ćemo:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Poslati novi proizvod (ako je dostupan)</li>
+                        <li class="terms__list-item">Ili vratiti novac</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">6.4 ❌ NE prihvatamo reklamacije za</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">"Ne sviđa mi se ukus"</li>
+                        <li class="terms__list-item">"Predomislio/la sam se"</li>
+                        <li class="terms__list-item">"Popio/la sam i nije mi prijalo"</li>
+                        <li class="terms__list-item">Oštećenja nakon preuzimanja</li>
+                        <li class="terms__list-item">Proizvode koje ste već otvorili (osim ako je problem postojao pre otvaranja)</li>
+                    </ul>
+                </div>
+
+                <!-- 7. ODGOVORNOST -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">7. ODGOVORNOST</h2>
+                    
+                    <h3 class="terms__subsection-title">7.1 Naša odgovornost</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Trudimo se da isporučimo kvalitetne proizvode u roku trajanja</li>
+                        <li class="terms__list-item">Odgovorni smo za oštećenja nastala tokom transporta (ako se prijave odmah)</li>
+                        <li class="terms__list-item">Odgovornost je ograničena na iznos plaćen za narudžbinu</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">7.2 NE odgovaramo za</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Štetu nastalu prekomernim konzumiranjem alkohola</li>
+                        <li class="terms__list-item">Zdravstvene probleme povezane sa alkoholom</li>
+                        <li class="terms__list-item">Ponašanje kupca pod uticajem alkohola</li>
+                        <li class="terms__list-item">Oštećenja nakon preuzimanja proizvoda</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">7.3 Vaša odgovornost</h3>
+                    <p class="terms__paragraph">Vi ste odgovorni za:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Tačnost podataka koje ste dali (ime, telefon, adresa)</li>
+                        <li class="terms__list-item">To da ste punoletno lice</li>
+                        <li class="terms__list-item">Odgovorno konzumiranje alkohola</li>
+                        <li class="terms__list-item">Ne davanje alkohola maloletnim licima</li>
+                    </ul>
+                </div>
+
+                <!-- 8. ZAŠTITA PODATAKA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">8. ZAŠTITA PODATAKA</h2>
+                    
+                    <h3 class="terms__subsection-title">8.1 Koje podatke prikupljamo</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Ime i prezime</li>
+                        <li class="terms__list-item">Broj telefona</li>
+                        <li class="terms__list-item">Adresu dostave</li>
+                        <li class="terms__list-item">Podatke o narudžbini</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">8.2 Kako koristimo podatke</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Za procesiranje i dostavu narudžbine</li>
+                        <li class="terms__list-item">Za kontaktiranje u vezi sa narudžbinom</li>
+                        <li class="terms__list-item">Za izradu fiskalnog računa</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">8.3 Čuvanje podataka</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Podatke o narudžbini čuvamo 5 godina (računovodstvena obaveza)</li>
+                        <li class="terms__list-item">Ne delimo podatke sa trećim licima (osim dostavljača koji vam donosi narudžbinu)</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">8.4 Vaša prava</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Možete zatražiti uvid u svoje podatke</li>
+                        <li class="terms__list-item">Možete zatražiti ispravku podataka</li>
+                        <li class="terms__list-item">Možete zatražiti brisanje (osim podataka koje moramo čuvati po zakonu)</li>
+                    </ul>
+                    <p class="terms__paragraph">Za sve zahteve: [email]</p>
+                    <p class="terms__paragraph">Detaljnije informacije u našoj Politici privatnosti.</p>
+                </div>
+
+                <!-- 9. MARKETING KOMUNIKACIJA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">9. MARKETING KOMUNIKACIJA</h2>
+                    
+                    <h3 class="terms__subsection-title">9.1 SMS/Email obaveštenja</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Možemo vam slati SMS ili email o statusu narudžbine</li>
+                        <li class="terms__list-item">Nećemo vam slati marketing poruke osim ako ne date pristanak</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">9.2 Odjava</h3>
+                    <p class="terms__paragraph">Ako želite da se odjavite, pošaljite poruku "STOP" ili nas kontaktirajte.</p>
+                </div>
+
+                <!-- 10. PONAŠANJE I BEZBEDNOST -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">10. PONAŠANJE I BEZBEDNOST</h2>
+                    
+                    <h3 class="terms__subsection-title">10.1 Poštovanje dostavljača</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Očekujemo ljubazno i pristojno ponašanje prema našim dostavljačima</li>
+                        <li class="terms__list-item">Verbalno ili fizičko nasilje neće biti tolerisano</li>
+                        <li class="terms__list-item">Zadržavamo pravo da odbijemo buduće narudžbine od problematičnih kupaca</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">10.2 Bezbednost dostavljača</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Dostavljač može odbiti dostavu ako se oseća ugroženo</li>
+                        <li class="terms__list-item">U slučaju sumnjivog ponašanja, kontaktiraćemo policiju</li>
+                    </ul>
+                </div>
+
+                <!-- 11. ODRICANJE OD ODGOVORNOSTI -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">11. ODRICANJE OD ODGOVORNOSTI</h2>
+                    
+                    <h3 class="terms__subsection-title">11.1 Dostupnost</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Platforma može biti privremeno nedostupna</li>
+                        <li class="terms__list-item">Neki proizvodi mogu biti rasprodati</li>
+                        <li class="terms__list-item">Radimo 24/7, ali u izuzetnim slučajevima (nepogoda, vanredno stanje) možemo obustaviti rad</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">11.2 Greške</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Trudimo se da sve informacije o proizvodima budu tačne</li>
+                        <li class="terms__list-item">Ne garantujemo da nema grešaka (slike, opisi, cene)</li>
+                        <li class="terms__list-item">U slučaju očigledne greške u ceni, možemo otkazati narudžbinu</li>
+                    </ul>
+                </div>
+
+                <!-- 12. REŠAVANJE SPOROVA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">12. REŠAVANJE SPOROVA</h2>
+                    
+                    <h3 class="terms__subsection-title">12.1 Kontakt</h3>
+                    <p class="terms__paragraph">Za sve pritužbe ili probleme, kontaktirajte nas:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Telefon: [telefon] (24/7)</li>
+                        <li class="terms__list-item">Email: [email]</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">12.2 Mirno rešavanje</h3>
+                    <p class="terms__paragraph">Trudimo se da sve probleme rešimo mirnim putem u komunikaciji sa vama.</p>
+
+                    <h3 class="terms__subsection-title">12.3 Sudska nadležnost</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Primenjuje se pravo Republike Srbije</li>
+                        <li class="terms__list-item">Nadležan sud je u Srbiji prema mestu prebivališta tuženog</li>
+                    </ul>
+                </div>
+
+                <!-- 13. DRUŠTVENO ODGOVORNA PORUKA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">13. DRUŠTVENO ODGOVORNA PORUKA</h2>
+                    <div class="terms__warning">
+                        <p class="terms__paragraph" style="font-weight: 600; margin-bottom: var(--spacing-sm);">⚠️ ALKOHOL JE ŠTETAN ZA ZDRAVLJE</p>
+                        <p class="terms__paragraph" style="font-weight: 600; margin-bottom: var(--spacing-sm);">⚠️ ZABRANJENA JE PRODAJA MALOLETNIM LICIMA (18+)</p>
+                        <p class="terms__paragraph" style="font-weight: 600; margin-bottom: var(--spacing-sm);">⚠️ NE VOZITE POD UTICAJEM ALKOHOLA</p>
+                        <p class="terms__paragraph" style="font-weight: 600; margin-bottom: var(--spacing-sm);">⚠️ TRUDNICE I DOJILJE NE BI TREBALO DA KONZUMIRAJU ALKOHOL</p>
+                        <p class="terms__paragraph" style="font-weight: 600; margin: 0;">⚠️ KONZUMIRAJTE ODGOVORNO</p>
+                    </div>
+                </div>
+
+                <!-- 14. KONTAKT -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">14. KONTAKT</h2>
+                    <div class="terms__contact-info">
+                        <p class="terms__contact-item"><span class="terms__contact-label">AlcoGo - Dostava alkohola 24/7</span></p>
+                        <p class="terms__contact-item">📞 <span class="terms__contact-label">Telefon:</span> [Unesite telefon]</p>
+                        <p class="terms__contact-item">📧 <span class="terms__contact-label">Email:</span> [Unesite email]</p>
+                        <p class="terms__contact-item">📍 <span class="terms__contact-label">Adresa:</span> [Unesite adresu]</p>
+                        <p class="terms__contact-item">🆔 <span class="terms__contact-label">PIB:</span> [Unesite PIB]</p>
+                        <p class="terms__contact-item">🆔 <span class="terms__contact-label">Matični broj:</span> [Unesite matični broj]</p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">Radno vreme:</span> 24/7 (Non-stop)</p>
+                    </div>
+                </div>
+
+                <!-- 15. ZAVRŠNE ODREDBE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">15. ZAVRŠNE ODREDBE</h2>
+                    
+                    <h3 class="terms__subsection-title">15.1 Prihvatanje uslova</h3>
+                    <p class="terms__paragraph">Klikom na "Poruči" ili davanjem narudžbine potvrđujete da:</p>
+                    <ul class="terms__checklist">
+                        <li class="terms__checklist-item">Ste pročitali i razumeli ove Uslove</li>
+                        <li class="terms__checklist-item">U potpunosti ih prihvatate</li>
+                        <li class="terms__checklist-item">Ste navršili 18 godina</li>
+                        <li class="terms__checklist-item">Razumete da NEMA povraćaja proizvoda</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">15.2 Važenje</h3>
+                    <p class="terms__paragraph">
+                        Ovi Uslovi stupaju na snagu 25. novembra 2025. i važiće dok koristite naše usluge.
+                    </p>
+
+                    <h3 class="terms__subsection-title">15.3 Nezavisnost odredbi</h3>
+                    <p class="terms__paragraph">
+                        Ako se bilo koja odredba utvrdi kao nevažeća, ostale odredbe ostaju na snazi.
+                    </p>
+
+                    <div class="terms__highlight" style="margin-top: var(--spacing-xl);">
+                        <p class="terms__paragraph" style="margin-bottom: var(--spacing-sm);"><strong>NAPOMENA:</strong> Ovi Uslovi korišćenja su sačinjeni u skladu sa:</p>
+                        <ul class="terms__list">
+                            <li class="terms__list-item">Zakonom o trgovini Republike Srbije</li>
+                            <li class="terms__list-item">Zakonom o zaštiti potrošača</li>
+                            <li class="terms__list-item">Zakonom o elektronskoj trgovini</li>
+                            <li class="terms__list-item">Drugim relevantnim propisima Republike Srbije</li>
+                        </ul>
+                        <p class="terms__paragraph" style="margin-top: var(--spacing-md); margin-bottom: 0; text-align: center; font-weight: 600;">
+                            Hvala vam na korišćenju AlcoGo usluga! 🍺🍷🥃
+                        </p>
+                        <p class="terms__paragraph" style="margin-top: var(--spacing-sm); margin-bottom: 0; text-align: center; font-size: 0.9rem;">
+                            POSLEDNJA VERZIJA: 25. novembar 2025.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__column">
+                    <h3 class="footer__title">O nama</h3>
+                    <p class="footer__text">
+                        AlcoGo je brza dostava pića koja radi onda kada drugi ne rade. Jednostavno poruči, mi stižemo.
+                    </p>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Brzi linkovi</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a href="index.html" class="footer__link">Početna</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="katalog.html" class="footer__link">Katalog</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="index.html#recenzije" class="footer__link">Recenzije</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Kontakt</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <span class="footer__text">Email: info@alcogo.com</span>
+                        </li>
+                        <li class="footer__item">
+                            <span class="footer__text">Telefon: +381 12 345 6789</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; <span id="currentYear"></span> AlcoGo. Sva prava zadržana.
+                </p>
+                <div class="footer__legal">
+                    <a href="politika-privatnosti.html" class="footer__legal-link">Politika privatnosti</a>
+                    <span class="footer__legal-separator">|</span>
+                    <a href="uslovi-koriscenja.html" class="footer__legal-link">Uslovi korišćenja</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popups -->
+    <div class="popup" id="appPopup">
+        <div class="popup__content">
+            <span class="popup__close" onclick="closeAppPopup()">&times;</span>
+            <p>Izrada aplikacije u toku...</p>
+        </div>
+    </div>
+
+    <div class="popup" id="accountPopup">
+        <div class="popup__content">
+            <span class="popup__close" onclick="closeAccountPopup()">&times;</span>
+            <p>Nalozi i benificije stalnih korisnika uskoro...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Postavljanje trenutne godine u copyright
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        (function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('nav');
+            const overlay = document.getElementById('navOverlay');
+            const body = document.body;
+            
+            if (!menuToggle || !nav) return;
+            
+            function toggleMenu() {
+                const isOpen = nav.classList.contains('nav--open');
+                
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+            
+            function openMenu() {
+                nav.classList.add('nav--open');
+                menuToggle.classList.add('menu-toggle--active');
+                if (overlay) overlay.classList.add('nav-overlay--active');
+                body.style.overflow = 'hidden';
+            }
+            
+            function closeMenu() {
+                nav.classList.remove('nav--open');
+                menuToggle.classList.remove('menu-toggle--active');
+                if (overlay) overlay.classList.remove('nav-overlay--active');
+                body.style.overflow = '';
+            }
+            
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+            
+            const navLinks = nav.querySelectorAll('.nav__link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMenu();
+                });
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
+                    closeMenu();
+                }
+            });
+        })();
+
+        // Popup functions
+        function showAppPopup(event) {
+            event.preventDefault();
+            document.getElementById('appPopup').style.display = 'flex';
+        }
+
+        function closeAppPopup() {
+            document.getElementById('appPopup').style.display = 'none';
+        }
+
+        function showAccountPopup(event) {
+            event.preventDefault();
+            document.getElementById('accountPopup').style.display = 'flex';
+        }
+
+        function closeAccountPopup() {
+            document.getElementById('accountPopup').style.display = 'none';
+        }
+
+        // Close popup when clicking outside
+        window.addEventListener('click', function(event) {
+            const appPopup = document.getElementById('appPopup');
+            const accountPopup = document.getElementById('accountPopup');
+            if (event.target === appPopup) {
+                closeAppPopup();
+            }
+            if (event.target === accountPopup) {
+                closeAccountPopup();
+            }
+        });
+    </script>
+</body>
+</html>
+

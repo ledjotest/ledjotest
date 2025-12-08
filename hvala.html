@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AlcoGo - Hvala na porudžbini">
+    <title>Hvala na porudžbini - AlcoGo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: var(--color-dark-bg);
+            color: var(--color-text);
+        }
+        .thankyou {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xxl) var(--spacing-md);
+        }
+        .thankyou__card {
+            width: min(960px, 100%);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(0,200,200,0.15);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            padding: clamp(24px, 3vw, 40px);
+        }
+        .thankyou__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        .thankyou__title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            color: var(--color-primary);
+            margin: 0;
+        }
+        .thankyou__subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin: 6px 0 0 0;
+            line-height: 1.5;
+        }
+        .thankyou__badge {
+            background: rgba(0,200,200,0.12);
+            color: var(--color-primary);
+            border: 1px solid rgba(0,200,200,0.25);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        .thankyou__section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .thankyou__section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            margin: 0 0 var(--spacing-sm) 0;
+            color: var(--color-text);
+        }
+        .thankyou__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+        .thankyou__list--stack .thankyou__row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+        .thankyou__label {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 0.2px;
+        }
+        .thankyou__row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+        .thankyou__row strong {
+            font-weight: 700;
+        }
+        .thankyou__item-name {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+        .thankyou__item-meta {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        .thankyou__total {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        .thankyou__actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .thankyou__links {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        .thankyou__link {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .thankyou__link svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+        }
+        .thankyou__message {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+        .empty-state {
+            text-align: center;
+            color: var(--color-text-secondary);
+        }
+        .empty-state a {
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="thankyou">
+        <div class="thankyou__card" id="thankyouCard">
+            <div class="thankyou__header">
+                <div>
+                    <h1 class="thankyou__title">Hvala na porudžbini!</h1>
+                    <p class="thankyou__subtitle">Bićete kontaktirani u najkraćem roku radi potvrde porudžbine.</p>
+                </div>
+            </div>
+
+            <div id="orderContent"></div>
+        </div>
+    </section>
+
+    <script>
+        function formatRsd(value) {
+            return 'RSD ' + Number(value || 0).toLocaleString('sr-RS');
+        }
+
+        function renderOrder() {
+            const container = document.getElementById('orderContent');
+            const raw = sessionStorage.getItem('alcogo_last_order');
+            if (!raw) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>Nema pronađene porudžbine.</p>
+                        <p><a href="katalog.html">Vrati se na katalog</a></p>
+                    </div>
+                `;
+                return;
+            }
+
+            let order;
+            try {
+                order = JSON.parse(raw);
+            } catch (e) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>Nema pronađene porudžbine.</p>
+                        <p><a href="katalog.html">Vrati se na katalog</a></p>
+                    </div>
+                `;
+                return;
+            }
+
+            const itemsHtml = (order.items || []).map(item => `
+                <div class="thankyou__row">
+                    <div>
+                        <div class="thankyou__item-name">${item.name}</div>
+                        <div class="thankyou__item-meta">${item.quantity} x ${formatRsd(item.price)}</div>
+                    </div>
+                    <div class="thankyou__item-name">${formatRsd(item.lineTotal)}</div>
+                </div>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="thankyou__section">
+                    <h3 class="thankyou__section-title">Podaci o kupcu</h3>
+                    <ul class="thankyou__list thankyou__list--stack">
+                        <li class="thankyou__row">
+                            <span class="thankyou__label">Ime i prezime</span>
+                            <strong>${order.name}</strong>
+                        </li>
+                        <li class="thankyou__row">
+                            <span class="thankyou__label">Telefon</span>
+                            <strong>${order.phone}</strong>
+                        </li>
+                        <li class="thankyou__row">
+                            <span class="thankyou__label">Adresa</span>
+                            <strong>${order.address}</strong>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="thankyou__section">
+                    <h3 class="thankyou__section-title">Porudžbina</h3>
+                    ${itemsHtml || '<div class="thankyou__item-meta">Nema stavki</div>'}
+                </div>
+
+                <div class="thankyou__section">
+                    <h3 class="thankyou__section-title">Pregled troškova</h3>
+                    <ul class="thankyou__list">
+                        <li class="thankyou__row"><span>Proizvodi</span><strong>${formatRsd(order.subtotal)}</strong></li>
+                        <li class="thankyou__row"><span>Dostava</span><strong>${formatRsd(order.deliveryFee)}</strong></li>
+                        <li class="thankyou__row"><span>Ukupno</span><strong class="thankyou__total">${formatRsd(order.total)}</strong></li>
+                    </ul>
+                </div>
+
+                <div class="thankyou__actions">
+                    <div class="thankyou__message">Ako želite da dodate ili promenite stavku, pozovite nas čim pre.</div>
+                    <div class="thankyou__links">
+                        <a class="thankyou__link" href="index.html">
+                            <span>Početna</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a class="thankyou__link" href="katalog.html">
+                            <span>Vrati se na katalog</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        renderOrder();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AlcoGo - Vaš partner za alkoholna pića i usluge">
+    <meta name="keywords" content="alkohol, pića, AlcoGo">
+    <meta name="author" content="AlcoGo">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AlcoGo">
+    <meta property="og:description" content="AlcoGo - Vaš partner za alkoholna pića i usluge">
+    
+    <title>AlcoGo - Vaš partner za alkoholna pića</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="katalog.css">
+</head>
+<body>
+    <!-- Header sa logoom i navigacijom -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Leva strana: Hamburger meni i Logo -->
+                <div class="header__left">
+                    <!-- Mobile menu toggle -->
+                    <button class="header__menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="menu-toggle__line"></span>
+                        <span class="menu-toggle__line"></span>
+                        <span class="menu-toggle__line"></span>
+                    </button>
+                    
+                    <!-- Logo -->
+                    <div class="header__logo">
+                        <a href="#home" class="logo-link">
+                            <img src="img/logo.png" alt="AlcoGo Logo" class="logo-img">
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Navigacija -->
+                <nav class="header__nav" id="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link">Početna</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="katalog.html" class="nav__link">Katalog</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="katalog.html?openCart=true" class="nav__link">Korpa</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#kako-funkcionisemo" class="nav__link">Kako Funkcionisemo</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#recenzije" class="nav__link">Recenzije</a>
+                        </li>
+                    </ul>
+                    <div class="nav__cta">
+                        <a href="#naruci" class="btn btn--primary">NARUCI SADA</a>
+                    </div>
+                    <div class="nav__apps">
+                        <a href="#" class="nav__app-link" onclick="showAppPopup(event)">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&releaseDate=1289520000" alt="Download on the App Store" class="nav__app-img">
+                        </a>
+                        <a href="#" class="nav__app-link" onclick="showAppPopup(event)">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="nav__app-img">
+                        </a>
+                    </div>
+                </nav>
+                
+                <!-- Overlay za zatvaranje menija -->
+                <div class="nav-overlay" id="navOverlay"></div>
+                
+                <!-- Desna strana: Profil ikonica -->
+                <div class="header__right">
+                    <a href="#" class="header__profile-link" aria-label="Profil" onclick="showAccountPopup(event)">
+                        <img src="img/mojprofil.png" alt="Profil" class="header__profile-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero sekcija sa glavnim tekstom i CTA -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero__content">
+                <h1 class="hero__title">DOSTAVA ALKOHOLA <br>24/7<br> ZA MANJE OD 30MIN</h1>
+                <p class="hero__alert">
+                    Trenutno dostupni samo za Beograd
+                </p>
+                <div class="hero__cta">
+                    <a href="katalog.html" class="btn btn--primary">NARUCI ODMAH</a>
+                </div>
+                <!-- Mesto za hero sliku/ilustraciju -->
+                <!-- <div class="hero__image">
+                    <img src="images/hero-image.jpg" alt="AlcoGo Hero" class="hero__img">
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcija sa proizvodima - carousel -->
+    <section class="products-carousel">
+        <div class="products-carousel__container">
+            <div class="products-carousel__track" id="carouselTrack">
+                <!-- Box 1 - Absolut Vodka -->
+                <div class="katalog-product" data-category="vodka">
+                    <img src="img/absolut-vodka.png" alt="Absolut Vodka" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">vodka</span>
+                        <h3 class="katalog-product__name">Absolut Vodka</h3>
+                        <p class="katalog-product__price">RSD1799</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(7)">Dodajte u korpu</button>
+                    </div>
+                </div>
+                <!-- Box 2 - Jack Daniels -->
+                <div class="katalog-product" data-category="viski">
+                    <img src="img/absolut-vodka.png" alt="Jack Daniels" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">viski</span>
+                        <h3 class="katalog-product__name">Jack Daniels</h3>
+                        <p class="katalog-product__price">RSD3500</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(4)">Dodajte u korpu</button>
+                    </div>
+                </div>
+                <!-- Box 3 - Jelen Pivo -->
+                <div class="katalog-product" data-category="pivo">
+                    <img src="img/absolut-vodka.png" alt="Jelen Pivo" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">pivo</span>
+                        <h3 class="katalog-product__name">Jelen Pivo</h3>
+                        <p class="katalog-product__price">RSD120</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(1)">Dodajte u korpu</button>
+                    </div>
+                </div>
+                <!-- Box 4 - Crno Vino -->
+                <div class="katalog-product" data-category="vino">
+                    <img src="img/absolut-vodka.png" alt="Crno Vino" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">vino</span>
+                        <h3 class="katalog-product__name">Crno Vino</h3>
+                        <p class="katalog-product__price">RSD800</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(10)">Dodajte u korpu</button>
+                    </div>
+                </div>
+                <!-- Box 5 - Coca Cola -->
+                <div class="katalog-product" data-category="sokovi">
+                    <img src="img/absolut-vodka.png" alt="Coca Cola" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">sokovi</span>
+                        <h3 class="katalog-product__name">Coca Cola</h3>
+                        <p class="katalog-product__price">RSD150</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(13)">Dodajte u korpu</button>
+                    </div>
+                </div>
+                <!-- Duplikati za seamless loop -->
+                <div class="katalog-product" data-category="vodka">
+                    <img src="img/absolut-vodka.png" alt="Absolut Vodka" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">vodka</span>
+                        <h3 class="katalog-product__name">Absolut Vodka</h3>
+                        <p class="katalog-product__price">RSD1799</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(7)">Dodajte u korpu</button>
+                    </div>
+                </div>
+                <div class="katalog-product" data-category="viski">
+                    <img src="img/absolut-vodka.png" alt="Jack Daniels" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">viski</span>
+                        <h3 class="katalog-product__name">Jack Daniels</h3>
+                        <p class="katalog-product__price">RSD3500</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(4)">Dodajte u korpu</button>
+                    </div>
+                </div>
+                <div class="katalog-product" data-category="pivo">
+                    <img src="img/absolut-vodka.png" alt="Jelen Pivo" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">pivo</span>
+                        <h3 class="katalog-product__name">Jelen Pivo</h3>
+                        <p class="katalog-product__price">RSD120</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(1)">Dodajte u korpu</button>
+                    </div>
+                </div>
+                <div class="katalog-product" data-category="vino">
+                    <img src="img/absolut-vodka.png" alt="Crno Vino" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">vino</span>
+                        <h3 class="katalog-product__name">Crno Vino</h3>
+                        <p class="katalog-product__price">RSD800</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(10)">Dodajte u korpu</button>
+                    </div>
+                </div>
+                <div class="katalog-product" data-category="sokovi">
+                    <img src="img/absolut-vodka.png" alt="Coca Cola" class="katalog-product__image">
+                    <div class="katalog-product__info">
+                        <span class="katalog-product__category">sokovi</span>
+                        <h3 class="katalog-product__name">Coca Cola</h3>
+                        <p class="katalog-product__price">RSD150</p>
+                        <button class="katalog-product__add-btn" onclick="addToCartFromHome(13)">Dodajte u korpu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="products-carousel__cta">
+            <a href="katalog.html" class="catalog-link">
+                <span>POGLEDAJ CEO KATALOG</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Sekcija "Kako Funkcionise AlcoGo?" -->
+    <section class="how-it-works" id="kako-funkcionisemo">
+        <div class="container">
+            <h2 class="how-it-works__title">
+                Kako Funkcionise <span class="how-it-works__title--highlight">AlcoGo</span>?
+            </h2>
+            <div class="how-it-works__grid">
+                <!-- Step 1 -->
+                <div class="how-it-works__step">
+                    <div class="how-it-works__icon">
+                        <img src="img/ruka.png" alt="Izaberi pice" class="how-it-works__icon-img" id="icon1">
+                    </div>
+                    <h3 class="how-it-works__step-title">Izaberi pice</h3>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="how-it-works__step">
+                    <div class="how-it-works__icon">
+                        <img src="img/kesa.png" alt="Naruci online" class="how-it-works__icon-img" id="icon2">
+                    </div>
+                    <h3 class="how-it-works__step-title">Naruci online</h3>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="how-it-works__step">
+                    <div class="how-it-works__icon">
+                        <img src="img/brza-dostava.png" alt="Stize za 30min" class="how-it-works__icon-img" id="icon3">
+                    </div>
+                    <h3 class="how-it-works__step-title">Stize za 30min</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcija "Zašto AlcoGo?" -->
+    <section class="why-alcogo">
+        <div class="container">
+            <h2 class="why-alcogo__title">
+                Zašto <span class="why-alcogo__title--highlight">AlcoGo</span>?
+            </h2>
+            <div class="why-alcogo__list">
+                <div class="why-alcogo__item">
+                    <span class="why-alcogo__emoji">⚡</span>
+                    <p class="why-alcogo__text">Brza Dostava</p>
+                </div>
+                <div class="why-alcogo__item">
+                    <span class="why-alcogo__emoji">🕐</span>
+                    <p class="why-alcogo__text">Dostupni 24/7</p>
+                </div>
+                <div class="why-alcogo__item">
+                    <span class="why-alcogo__emoji">🍾</span>
+                    <p class="why-alcogo__text">
+                        <span class="why-text-mobile">Brendovi koje volite</span>
+                        <span class="why-text-desktop">Poznati brendovi</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcija "Zona dostave" -->
+    <section class="delivery-zone" id="zona-dostave">
+        <div class="container">
+            <h2 class="delivery-zone__title">
+                Zona <span class="delivery-zone__title--highlight">dostave</span>
+            </h2>
+            <div class="delivery-zone__map">
+                <img src="img/mapa.png" alt="Mapa Beograda - Zona dostave" class="delivery-zone__map-img" id="deliveryMap">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcija "Recenzije" -->
+    <section class="reviews" id="recenzije">
+        <div class="container">
+            <h2 class="reviews__title">
+                <span class="reviews__title--highlight">Recenzije</span>
+            </h2>
+            <div class="reviews__grid">
+                <!-- Recenzija 1 -->
+                <div class="review-card">
+                    <div class="review-card__image">
+                        <img src="img/mojprofil.png" alt="Anonimno" class="review-card__img" id="reviewImg1">
+                    </div>
+                    <div class="review-card__content">
+                        <h3 class="review-card__name">Vuk</h3>
+                        <p class="review-card__text">
+                            Bili smo u utorak na žurci do jedan, pa smo posle otišli na after kod mene. Tek tad sam skapirao da kod kuće nemam ništa da se popije, a u blizini ništa nije radilo plus smo pili i nismo mogli da vozimo. Setim se da sam negde video reklamu za AlcoGo i reko ajde da probamo. Iskreno, iznenadile su me cene, bukvalno kao u marketu, a jeftinije nego na pumpi. Stigli jako brzo, sve preporuke.
+                        </p>
+                        <div class="review-card__rating">★★★★★</div>
+                    </div>
+                </div>
+                
+                <!-- Recenzija 2 -->
+                <div class="review-card">
+                    <div class="review-card__image">
+                        <img src="img/mojprofil.png" alt="Anonimno" class="review-card__img" id="reviewImg2">
+                    </div>
+                    <div class="review-card__content">
+                        <h3 class="review-card__name">Anonimno</h3>
+                        <p class="review-card__text">
+                            Dosla drugarica oko 12, posvađala se s dečkom i treba joj društvo. Naravno, nemam ništa da joj ponudim osim vode iz česme. Gledam šta uopšte radi u ovo doba i naletim na AlcoGo. Poručimo vodku, stiglo pre nego što sam uspeo da smuljam priču kako da je utešim. Ne znam kako pre nisam znao za ovo.
+                        </p>
+                        <div class="review-card__rating">★★★★★</div>
+                    </div>
+                </div>
+                
+                <!-- Recenzija 3 -->
+                <div class="review-card">
+                    <div class="review-card__image">
+                        <img src="img/mojprofil.png" alt="Anonimno" class="review-card__img" id="reviewImg3">
+                    </div>
+                    <div class="review-card__content">
+                        <h3 class="review-card__name">Nemanja</h3>
+                        <p class="review-card__text">
+                            Drug je dobio dete pa morali odmah da proslavimo. Mislim da smo bili najveća porudžbina do sad, hahaha. Stiglo brže nego da smo sami otišli da kupimo.
+                        </p>
+                        <div class="review-card__rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews__cta">
+                <a href="katalog.html" class="btn btn--primary">NARUCI SADA</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer sa osnovnim informacijama i linkovima -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <!-- Footer kolona 1 - O nama -->
+                <div class="footer__column">
+                    <h3 class="footer__title">O nama</h3>
+                    <p class="footer__text">
+                        <!-- Dodati kratak opis kompanije -->
+                        AlcoGo je brza dostava pića koja radi onda kada drugi ne rade. Jednostavno poruči, mi stižemo.
+                    </p>
+                </div>
+                
+                <!-- Footer kolona 2 - Brzi linkovi -->
+                <div class="footer__column">
+                    <h3 class="footer__title">Brzi linkovi</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a href="#home" class="footer__link">Početna</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#zona-dostave" class="footer__link">Zona dostave</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#recenzije" class="footer__link">Recenzije</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Footer kolona 3 - Kontakt -->
+                <div class="footer__column">
+                    <h3 class="footer__title">Kontakt</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <span class="footer__text">Email: info@alcogo.com</span>
+                        </li>
+                        <li class="footer__item">
+                            <span class="footer__text">Telefon: +381 12 345 6789</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer copyright -->
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; <span id="currentYear"></span> AlcoGo. Sva prava zadržana.
+                </p>
+                <div class="footer__legal">
+                    <a href="politika-privatnosti.html" class="footer__legal-link">Politika privatnosti</a>
+                    <span class="footer__legal-separator">|</span>
+                    <a href="uslovi-koriscenja.html" class="footer__legal-link">Uslovi korišćenja</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript za osnovne funkcionalnosti -->
+    <script>
+        // Postavljanje trenutne godine u copyright
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle - moderna animacija
+        (function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('nav');
+            const overlay = document.getElementById('navOverlay');
+            const body = document.body;
+            
+            if (!menuToggle || !nav) return;
+            
+            // Funkcija za otvaranje/zatvaranje menija
+            function toggleMenu() {
+                const isOpen = nav.classList.contains('nav--open');
+                
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+            
+            function openMenu() {
+                nav.classList.add('nav--open');
+                menuToggle.classList.add('menu-toggle--active');
+                if (overlay) overlay.classList.add('nav-overlay--active');
+                body.style.overflow = 'hidden'; // Sprečava scroll kada je meni otvoren
+            }
+            
+            function closeMenu() {
+                nav.classList.remove('nav--open');
+                menuToggle.classList.remove('menu-toggle--active');
+                if (overlay) overlay.classList.remove('nav-overlay--active');
+                body.style.overflow = ''; // Vraća scroll
+            }
+            
+            // Event listener za hamburger dugme
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            // Zatvaranje menija kada se klikne na overlay
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+            
+            // Zatvaranje menija kada se klikne na link
+            const navLinks = nav.querySelectorAll('.nav__link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMenu();
+                });
+            });
+            
+            // Zatvaranje menija na ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
+                    closeMenu();
+                }
+            });
+        })();
+        
+        // Products Carousel - automatska animacija sa drag/swipe funkcionalnostima
+        (function() {
+            const track = document.getElementById('carouselTrack');
+            if (!track) return;
+            
+            const gap = 24; // 1.5rem = 24px
+            const originalItems = Array.from(track.children);
+            const itemCount = originalItems.length;
+            // Dupliramo listu da omogućimo beskonačni loop bez menjanja izvornog redosleda
+            originalItems.forEach(item => {
+                const clone = item.cloneNode(true);
+                track.appendChild(clone);
+            });
+            
+            let currentPosition = 0;
+            let animationSpeed = 0.9; // px per frame (60fps ≈ 54px/s)
+            let isDragging = false;
+            let dragStartX = 0;
+            let dragStartPosition = 0;
+            let animationId = null;
+            let lastTime = performance.now();
+            let wasDragging = false;
+            
+            function getCardStep() {
+                const first = track.querySelector('.katalog-product');
+                const width = first ? first.getBoundingClientRect().width : 200;
+                return width + gap;
+            }
+            
+            function getLoopWidth() {
+                return getCardStep() * itemCount;
+            }
+            
+            function normalizePosition() {
+                const loopWidth = getLoopWidth();
+                while (currentPosition <= -loopWidth) {
+                    currentPosition += loopWidth;
+                }
+                while (currentPosition > 0) {
+                    currentPosition -= loopWidth;
+                }
+            }
+            
+            // Funkcija za ažuriranje pozicije
+            function updatePosition() {
+                track.style.transform = `translateX(${currentPosition}px)`;
+            }
+            
+            // Automatska animacija
+            function animate(currentTime) {
+                if (!isDragging) {
+                    const deltaTime = currentTime - lastTime;
+                    const deltaPosition = (animationSpeed * deltaTime) / 16.67; // Normalizacija za 60fps
+                    currentPosition -= deltaPosition;
+                    normalizePosition();
+                    updatePosition();
+                }
+                
+                lastTime = currentTime;
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            // Start animacije
+            function startAnimation() {
+                if (!animationId) {
+                    lastTime = performance.now();
+                    animationId = requestAnimationFrame(animate);
+                }
+            }
+            
+            // Mouse events za desktop
+            track.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                wasDragging = false;
+                dragStartX = e.clientX;
+                dragStartPosition = currentPosition;
+                track.classList.add('dragging');
+                e.preventDefault();
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                wasDragging = true;
+                const deltaX = e.clientX - dragStartX;
+                currentPosition = dragStartPosition + deltaX;
+                normalizePosition();
+                updatePosition();
+            });
+            
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    track.classList.remove('dragging');
+                    if (!wasDragging) {
+                        wasDragging = false;
+                    }
+                    startAnimation(); // Nastavi animaciju
+                }
+            });
+            
+            // Touch events za mobile
+            track.addEventListener('touchstart', function(e) {
+                isDragging = true;
+                wasDragging = false;
+                dragStartX = e.touches[0].clientX;
+                dragStartPosition = currentPosition;
+                track.classList.add('dragging');
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                
+                wasDragging = true;
+                const deltaX = e.touches[0].clientX - dragStartX;
+                currentPosition = dragStartPosition + deltaX;
+                normalizePosition();
+                updatePosition();
+            }, { passive: true });
+            
+            document.addEventListener('touchend', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    track.classList.remove('dragging');
+                    if (!wasDragging) {
+                        wasDragging = false;
+                    }
+                    startAnimation(); // Nastavi animaciju
+                }
+            });
+            
+            // Spreči klik na link dok se vuče
+            track.addEventListener('click', function(e) {
+                if (wasDragging) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    wasDragging = false;
+                }
+            }, true);
+            
+            // Start animacije na učitavanju
+            startAnimation();
+            
+            // Update na resize
+            window.addEventListener('resize', function() {
+                // Ne resetujemo poziciju, samo ažuriramo
+                updatePosition();
+            });
+        })();
+        
+        // Funkcija za dodavanje u korpu sa početne stranice
+        function addToCartFromHome(productId) {
+            // Preusmeri na katalog sa query parametrom
+            window.location.href = `katalog.html?addToCart=${productId}`;
+        }
+        
+        // Popup za aplikacije
+        function showAppPopup(e) {
+            e.preventDefault();
+            const popup = document.getElementById('appPopup');
+            if (popup) {
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        // Popup za naloge
+        function showAccountPopup(e) {
+            e.preventDefault();
+            const popup = document.getElementById('accountPopup');
+            if (popup) {
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        // Zatvaranje popup-ova
+        document.addEventListener('DOMContentLoaded', function() {
+            const appPopup = document.getElementById('appPopup');
+            const accountPopup = document.getElementById('accountPopup');
+            
+            // Zatvaranje app popup-a
+            if (appPopup) {
+                const closeBtn = appPopup.querySelector('.popup__close');
+                const overlay = appPopup.querySelector('.popup-overlay');
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        appPopup.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                }
+                
+                if (overlay) {
+                    overlay.addEventListener('click', function(e) {
+                        if (e.target === overlay) {
+                            appPopup.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            }
+            
+            // Zatvaranje account popup-a
+            if (accountPopup) {
+                const closeBtn = accountPopup.querySelector('.popup__close');
+                const overlay = accountPopup.querySelector('.popup-overlay');
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        accountPopup.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                }
+                
+                if (overlay) {
+                    overlay.addEventListener('click', function(e) {
+                        if (e.target === overlay) {
+                            accountPopup.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+    
+    <!-- Popup za aplikacije -->
+    <div class="popup" id="appPopup">
+        <div class="popup-overlay"></div>
+        <div class="popup__content">
+            <button class="popup__close">&times;</button>
+            <p class="popup__text">Izrada aplikacije u toku...</p>
+        </div>
+    </div>
+    
+    <!-- Popup za naloge -->
+    <div class="popup" id="accountPopup">
+        <div class="popup-overlay"></div>
+        <div class="popup__content">
+            <button class="popup__close">&times;</button>
+            <p class="popup__text">Nalozi i benificije stalnih korisnika uskoro...</p>
+        </div>
+    </div>
+</body>
+</html>
+

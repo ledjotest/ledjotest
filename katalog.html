@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AlcoGo - Katalog proizvoda">
+    <title>Katalog - AlcoGo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="katalog.css">
+</head>
+<body>
+    <!-- Header sa logoom i navigacijom -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Leva strana: Hamburger meni i Logo -->
+                <div class="header__left">
+                    <!-- Mobile menu toggle -->
+                    <button class="header__menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="menu-toggle__line"></span>
+                        <span class="menu-toggle__line"></span>
+                        <span class="menu-toggle__line"></span>
+                    </button>
+                    
+                    <!-- Logo -->
+                    <div class="header__logo">
+                        <a href="index.html" class="logo-link">
+                            <img src="img/logo.png" alt="AlcoGo Logo" class="logo-img">
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Navigacija -->
+                <nav class="header__nav" id="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="index.html" class="nav__link">Početna</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="katalog.html" class="nav__link">Katalog</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link" onclick="openCartModal(event)">Korpa</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="index.html#kako-funkcionisemo" class="nav__link">Kako Funkcionisemo</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="index.html#recenzije" class="nav__link">Recenzije</a>
+                        </li>
+                    </ul>
+                    <div class="nav__cta">
+                        <a href="#" class="btn btn--primary" onclick="openCartModal(event)">NARUCI SADA</a>
+                    </div>
+                    <div class="nav__apps">
+                        <a href="#" class="nav__app-link" onclick="showAppPopup(event)">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&releaseDate=1289520000" alt="Download on the App Store" class="nav__app-img">
+                        </a>
+                        <a href="#" class="nav__app-link" onclick="showAppPopup(event)">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="nav__app-img">
+                        </a>
+                    </div>
+                </nav>
+                
+                <!-- Overlay za zatvaranje menija -->
+                <div class="nav-overlay" id="navOverlay"></div>
+                
+                <!-- Desna strana: Profil ikonica -->
+                <div class="header__right">
+                    <a href="#" class="header__profile-link" aria-label="Profil" onclick="showAccountPopup(event)">
+                        <img src="img/mojprofil.png" alt="Profil" class="header__profile-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Katalog sekcija -->
+    <section class="katalog-section">
+        <div class="container">
+            <h1 class="katalog__title">
+                <span class="katalog__title--highlight">Katalog</span>
+            </h1>
+            
+            <!-- Filteri -->
+            <div class="katalog__filters">
+                <div class="katalog__filter-group">
+                    <h3 class="katalog__filter-title">Kategorije:</h3>
+                    <div class="katalog__filter-buttons">
+                        <button class="filter-btn active" data-category="all">Sve</button>
+                        <button class="filter-btn" data-category="pivo">Pivo</button>
+                        <button class="filter-btn" data-category="viski">Viski</button>
+                        <button class="filter-btn" data-category="vodka">Vodka</button>
+                        <button class="filter-btn" data-category="vino">Vino</button>
+                        <button class="filter-btn" data-category="sokovi">Sokovi</button>
+                    </div>
+                </div>
+                
+                <div class="katalog__filter-group">
+                    <h3 class="katalog__filter-title">Cena:</h3>
+                    <div class="katalog__price-filter">
+                        <input type="range" id="priceRange" class="katalog__price-range" min="0" max="10000" value="10000" step="500">
+                        <div class="katalog__price-display">
+                            <span>Do: <span id="priceValue">10000</span> RSD</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="katalog__sort">
+                    <label for="sortSelect" class="katalog__sort-label">Sortiraj:</label>
+                    <select id="sortSelect" class="katalog__sort-select">
+                        <option value="name-asc">Naziv A-Z</option>
+                        <option value="name-desc">Naziv Z-A</option>
+                        <option value="price-asc">Cena: Najniža</option>
+                        <option value="price-desc">Cena: Najviša</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Proizvodi grid -->
+            <div class="katalog__products" id="productsGrid">
+                <!-- Proizvodi će se dinamički dodati preko JavaScript-a -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating korpa ikonica -->
+    <div class="cart-icon" id="cartIcon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-icon__count hidden" id="cartCount">0</span>
+    </div>
+
+    <!-- Korpa overlay -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-modal">
+            <div class="cart-modal__header">
+                <h2 class="cart-modal__title">Korpa</h2>
+                <button class="cart-modal__close" id="closeCart">&times;</button>
+            </div>
+            
+            <div class="cart-modal__content" id="cartContent">
+                <div class="cart-empty" id="cartEmpty">
+                    <p>Korpa je prazna</p>
+                </div>
+                <div class="cart-items" id="cartItems"></div>
+                <div class="cart-form-wrapper" id="cartFormWrapper" style="display: none;">
+                    <div class="cart-summary">
+                        <div class="cart-summary__row">
+                            <span class="cart-summary__label">Cena proizvoda:</span>
+                            <span class="cart-summary__value" id="cartSubtotal">0 RSD</span>
+                        </div>
+                        <div class="cart-summary__row">
+                            <span class="cart-summary__label">Dostava:</span>
+                            <span class="cart-summary__value" id="cartDelivery">150 RSD</span>
+                        </div>
+                        <div class="cart-summary__row cart-summary__row--total">
+                            <span class="cart-summary__label">Ukupno:</span>
+                            <span class="cart-summary__value cart-summary__value--total" id="cartTotal">0 RSD</span>
+                        </div>
+                    </div>
+                    <div class="cart-form">
+                        <div class="cart-form__group">
+                            <label for="customerName" class="cart-form__label">Ime i prezime *</label>
+                            <input type="text" id="customerName" class="cart-form__input" required>
+                            <span class="cart-form__error" id="errorName"></span>
+                        </div>
+                        <div class="cart-form__group">
+                            <label for="customerPhone" class="cart-form__label">Telefon *</label>
+                            <input type="tel" id="customerPhone" class="cart-form__input" pattern="[0-9]*" inputmode="numeric" required>
+                            <span class="cart-form__error" id="errorPhone"></span>
+                        </div>
+                        <div class="cart-form__group">
+                            <label for="customerAddress" class="cart-form__label">Adresa *</label>
+                            <input type="text" id="customerAddress" class="cart-form__input" required>
+                            <span class="cart-form__error" id="errorAddress"></span>
+                        </div>
+                        <div class="cart-form__group">
+                            <label class="cart-form__checkbox-label">
+                                <input type="checkbox" id="cartAgreement" class="cart-form__checkbox" required>
+                                <span>Prihvatam <a href="uslovi-koriscenja.html" target="_blank" style="color: var(--color-primary); text-decoration: underline;">uslove korišćenja</a> i garantujem da sam punoletan/punoletna (18+).*</span>
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn--primary btn--full" id="orderBtn">PORUČI ODMAH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__column">
+                    <h3 class="footer__title">O nama</h3>
+                    <p class="footer__text">
+                        AlcoGo je brza dostava pića koja radi onda kada drugi ne rade. Jednostavno poruči, mi stižemo.
+                    </p>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Brzi linkovi</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a href="index.html" class="footer__link">Početna</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="katalog.html" class="footer__link">Katalog</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="index.html#recenzije" class="footer__link">Recenzije</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Kontakt</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <span class="footer__text">Email: info@alcogo.com</span>
+                        </li>
+                        <li class="footer__item">
+                            <span class="footer__text">Telefon: +381 12 345 6789</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; <span id="currentYear"></span> AlcoGo. Sva prava zadržana.
+                </p>
+                <div class="footer__legal">
+                    <a href="politika-privatnosti.html" class="footer__legal-link">Politika privatnosti</a>
+                    <span class="footer__legal-separator">|</span>
+                    <a href="uslovi-koriscenja.html" class="footer__legal-link">Uslovi korišćenja</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="katalog.js"></script>
+    <script>
+        // Postavljanje trenutne godine u copyright
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle - moderna animacija
+        (function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('nav');
+            const overlay = document.getElementById('navOverlay');
+            const body = document.body;
+            
+            if (!menuToggle || !nav) return;
+            
+            function toggleMenu() {
+                const isOpen = nav.classList.contains('nav--open');
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+            
+            function openMenu() {
+                nav.classList.add('nav--open');
+                menuToggle.classList.add('menu-toggle--active');
+                if (overlay) overlay.classList.add('nav-overlay--active');
+                body.style.overflow = 'hidden';
+            }
+            
+            function closeMenu() {
+                nav.classList.remove('nav--open');
+                menuToggle.classList.remove('menu-toggle--active');
+                if (overlay) overlay.classList.remove('nav-overlay--active');
+                body.style.overflow = '';
+            }
+            
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+            
+            const navLinks = nav.querySelectorAll('.nav__link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
+                    closeMenu();
+                }
+            });
+        })();
+
+        // Funkcija za otvaranje korpe modal-a
+        function openCartModal(e) {
+            e.preventDefault();
+            if (typeof openCartOverlay === 'function') {
+                openCartOverlay();
+            } else {
+                const cartOverlay = document.getElementById('cartOverlay');
+                if (cartOverlay) {
+                    cartOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            // Zatvori hamburger meni ako je otvoren
+            const nav = document.getElementById('nav');
+            if (nav && nav.classList.contains('nav--open')) {
+                nav.classList.remove('nav--open');
+                document.getElementById('menuToggle').classList.remove('menu-toggle--active');
+                document.getElementById('navOverlay').classList.remove('nav-overlay--active');
+            }
+        }
+
+        // Popup za aplikacije
+        function showAppPopup(e) {
+            e.preventDefault();
+            const popup = document.getElementById('appPopup');
+            if (popup) {
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        // Popup za naloge
+        function showAccountPopup(e) {
+            e.preventDefault();
+            const popup = document.getElementById('accountPopup');
+            if (popup) {
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        // Zatvaranje popup-ova
+        document.addEventListener('DOMContentLoaded', function() {
+            const appPopup = document.getElementById('appPopup');
+            const accountPopup = document.getElementById('accountPopup');
+            
+            // Zatvaranje app popup-a
+            if (appPopup) {
+                const closeBtn = appPopup.querySelector('.popup__close');
+                const overlay = appPopup.querySelector('.popup-overlay');
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        appPopup.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                }
+                
+                if (overlay) {
+                    overlay.addEventListener('click', function(e) {
+                        if (e.target === overlay) {
+                            appPopup.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            }
+            
+            // Zatvaranje account popup-a
+            if (accountPopup) {
+                const closeBtn = accountPopup.querySelector('.popup__close');
+                const overlay = accountPopup.querySelector('.popup-overlay');
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        accountPopup.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                }
+                
+                if (overlay) {
+                    overlay.addEventListener('click', function(e) {
+                        if (e.target === overlay) {
+                            accountPopup.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+    
+    <!-- Popup za aplikacije -->
+    <div class="popup" id="appPopup">
+        <div class="popup-overlay"></div>
+        <div class="popup__content">
+            <button class="popup__close">&times;</button>
+            <p class="popup__text">Izrada aplikacije u toku...</p>
+        </div>
+    </div>
+    
+    <!-- Popup za naloge -->
+    <div class="popup" id="accountPopup">
+        <div class="popup-overlay"></div>
+        <div class="popup__content">
+            <button class="popup__close">&times;</button>
+            <p class="popup__text">Nalozi i benificije stalnih korisnika uskoro...</p>
+        </div>
+    </div>
+</body>
+</html>
+

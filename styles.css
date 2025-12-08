@@ -1,0 +1,1487 @@
+/* ============================================
+   AlcoGo - Mobile-First Skeleton Stylesheet
+   ============================================ */
+
+/* CSS Variables - Boje i osnovne vrednosti */
+:root {
+    /* Boje */
+    --color-primary: #00C8C8;
+    --color-dark-bg: #081A28;
+    --color-text: #FFFFFF;
+    --color-text-secondary: rgba(255, 255, 255, 0.8);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Typography */
+    --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.6;
+    
+    /* Container */
+    --container-max-width: 1200px;
+    --container-padding: 1rem;
+    
+    /* Transitions */
+    --transition-base: 0.3s ease;
+}
+
+/* Reset i osnovni stilovi */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background-color: var(--color-dark-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container - responsive wrapper */
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.header {
+    background-color: var(--color-dark-bg);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Dodati border-bottom ili box-shadow kasnije */
+    min-height: 70px;
+    max-height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.header .container {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+    height: 100%;
+}
+
+/* Leva strana: Hamburger + Logo */
+.header__left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1001;
+}
+
+/* Logo */
+.header__logo {
+    display: flex;
+    align-items: center;
+    margin-left: -23px;
+    position: relative;
+    z-index: 1002;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: var(--color-text);
+    display: inline-block;
+    line-height: 0;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    /* Zameniti sa slikom kasnije */
+}
+
+.logo-img {
+    width: 115px;
+    height: 115px;
+    object-fit: contain;
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+/* Navigacija */
+.header__nav {
+    /* Mobile: sakrivena po defaultu, prikazuje se preko toggle-a */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--color-dark-bg);
+    padding-top: 70px;
+    padding-bottom: var(--spacing-xl);
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+    box-shadow: none;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.header__nav.nav--open {
+    transform: translateX(0);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Overlay za zatvaranje menija */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 998;
+    pointer-events: none;
+}
+
+.nav-overlay.nav-overlay--active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.nav__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    /* Desktop: flex-direction: row */
+}
+
+.nav__item {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition-delay: 0s;
+}
+
+.header__nav.nav--open .nav__item {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.header__nav.nav--open .nav__item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.header__nav.nav--open .nav__item:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.header__nav.nav--open .nav__item:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.header__nav.nav--open .nav__item:nth-child(4) {
+    transition-delay: 0.25s;
+}
+
+.header__nav.nav--open .nav__item:nth-child(5) {
+    transition-delay: 0.3s;
+}
+
+.nav__cta {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition-delay: 0s;
+}
+
+.header__nav.nav--open .nav__cta {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.35s;
+}
+
+.nav__apps {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition-delay: 0s;
+}
+
+.header__nav.nav--open .nav__apps {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.4s;
+}
+
+.nav__link {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    display: block;
+    padding: var(--spacing-md) var(--spacing-sm);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+
+.nav__apps {
+    padding: var(--spacing-md) var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: var(--spacing-sm);
+}
+
+.nav__app-link {
+    display: block;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.nav__app-link:hover {
+    opacity: 0.8;
+}
+
+.nav__app-img {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.nav__app-link:last-child .nav__app-img {
+    max-width: 195px;
+}
+
+/* Popup stilovi */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+.popup.active {
+    display: flex;
+}
+
+.popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popup__content {
+    position: relative;
+    background-color: var(--color-dark-bg);
+    border-radius: 16px;
+    padding: var(--spacing-xl);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.popup__close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.popup__close:hover {
+    color: var(--color-primary);
+}
+
+.popup__text {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.125rem;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Mobile menu toggle */
+.header__menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1001;
+}
+
+.menu-toggle__line {
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    border-radius: 2px;
+}
+
+/* Hamburger animacija - transformacija u X */
+.header__menu-toggle.menu-toggle--active .menu-toggle__line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.header__menu-toggle.menu-toggle--active .menu-toggle__line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.header__menu-toggle.menu-toggle--active .menu-toggle__line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Desna strana: Profil ikonica */
+.header__right {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header__profile-link {
+    display: inline-block;
+    line-height: 0;
+    text-decoration: none;
+    transition: opacity var(--transition-base);
+}
+
+.header__profile-link:hover {
+    opacity: 0.8;
+}
+
+.header__profile-img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+/* ============================================
+   Hero sekcija
+   ============================================ */
+.hero {
+    padding: var(--spacing-xl) 0;
+    min-height: 60vh;
+    background-image: url('img/hero-pozadina.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero__content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero__title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+    text-transform: uppercase;
+    line-height: 1.2;
+    /* Desktop: font-size veći */
+}
+
+.hero__alert {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: var(--spacing-lg);
+    margin-top: var(--spacing-xs);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero__cta {
+    margin-top: var(--spacing-lg);
+}
+
+.hero__image {
+    margin-top: var(--spacing-lg);
+    /* Dodati stilove za hero sliku kasnije */
+}
+
+.hero__img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ============================================
+   Products Carousel
+   ============================================ */
+.products-carousel {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-dark-bg);
+    overflow: hidden;
+    position: relative;
+}
+
+.products-carousel__container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.products-carousel__track {
+    display: flex;
+    gap: var(--spacing-lg);
+    width: fit-content;
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+.products-carousel__track .katalog-product {
+    flex-shrink: 0;
+    width: 180px;
+    min-height: 260px;
+}
+
+/* Usklađivanje kartica proizvoda sa katalog stranice */
+.katalog-product {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    border: 2px solid rgba(0, 200, 200, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.katalog-product__image {
+    width: 100%;
+    height: calc(200px * 0.7);
+    object-fit: contain;
+    display: block;
+    border-radius: 12px 12px 0 0;
+    background-color: transparent;
+    flex-shrink: 0;
+}
+
+.katalog-product__info {
+    padding: var(--spacing-xs);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.katalog-product__name {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text);
+    margin: 0 0 2px 0;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.katalog-product__price {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(189, 195, 199, 0.8);
+    margin: 0 0 4px 0;
+    text-align: left;
+}
+
+.katalog-product__category {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.katalog-product__add-btn {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    padding: var(--spacing-xs);
+    background-color: var(--color-primary);
+    color: var(--color-dark-bg);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: auto;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.products-carousel__track.dragging {
+    transition: none;
+}
+
+.product-box {
+    flex-shrink: 0;
+    width: 200px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 0;
+    padding-bottom: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    cursor: grab;
+    user-select: none;
+    overflow: hidden;
+}
+
+.product-box:active {
+    cursor: grabbing;
+}
+
+.product-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.product-box__image {
+    width: 100%;
+    height: calc(300px * 0.7);
+    object-fit: contain;
+    display: block;
+    border-radius: 12px 12px 0 0;
+    margin: 0;
+    background-color: transparent;
+    flex-shrink: 0;
+}
+
+.product-box__info {
+    width: 100%;
+    text-align: left;
+    margin-top: auto;
+    padding: var(--spacing-sm) var(--spacing-md) 0;
+}
+
+.product-box__name {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text);
+    margin: 0 0 2px 0;
+    line-height: 1.4;
+}
+
+.product-box__price {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(189, 195, 199, 0.8);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Animacija se kontroliše preko JavaScript-a */
+
+.products-carousel__cta {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+}
+
+.catalog-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    padding: 0;
+    border-radius: 0;
+    position: relative;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.catalog-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.catalog-link span {
+    letter-spacing: 0.4px;
+}
+
+.catalog-link svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    transform: translateX(0);
+    transition: transform 0.2s ease;
+}
+
+.catalog-link:hover {
+    color: #38e1e1;
+    transform: translateY(-1px);
+}
+
+.catalog-link:hover::after {
+    opacity: 1;
+    transform: translateY(1px);
+}
+
+.catalog-link:hover svg {
+    transform: translateX(3px);
+}
+
+/* ============================================
+   How It Works Section
+   ============================================ */
+.how-it-works {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--color-dark-bg);
+}
+
+.how-it-works__title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-text);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xxl);
+    line-height: 1.2;
+}
+
+.how-it-works__title--highlight {
+    color: var(--color-primary);
+}
+
+.how-it-works__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.how-it-works__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-lg);
+    transition: transform 0.3s ease;
+}
+
+.how-it-works__step:hover {
+    transform: translateY(-5px);
+}
+
+.how-it-works__icon {
+    width: 120px;
+    height: 120px;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 200, 200, 0.1);
+    border-radius: 50%;
+    position: relative;
+}
+
+.how-it-works__icon-img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    display: block;
+}
+
+#icon1 {
+    width: 170px;
+    height: 170px;
+    margin-left: 15px;
+    margin-top: 8px;
+}
+
+#icon3 {
+    width: 145px;
+    height: 145px;
+}
+
+.how-it-works__step-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ============================================
+   Why AlcoGo Section
+   ============================================ */
+.why-alcogo {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--color-dark-bg);
+}
+
+.why-alcogo__title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-text);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.2;
+}
+
+.why-alcogo__title--highlight {
+    color: var(--color-primary);
+}
+
+.why-alcogo__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.why-alcogo__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border-left: 4px solid var(--color-primary);
+}
+
+.why-alcogo__emoji {
+    font-size: 2.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.why-alcogo__text {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.why-text-desktop {
+    display: none;
+}
+.why-text-mobile {
+    display: inline;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    transition: var(--transition-base);
+    text-align: center;
+    border-radius: 28px;
+}
+
+.btn--primary {
+    background-color: #00C8C8;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 400;
+    /* Dodati hover efekte kasnije */
+}
+
+.btn--full {
+    width: 100%;
+}
+
+/* ============================================
+   Delivery Zone Section
+   ============================================ */
+.delivery-zone {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--color-dark-bg);
+}
+
+.delivery-zone__title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-text);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.2;
+}
+
+.delivery-zone__title--highlight {
+    color: var(--color-primary);
+}
+
+.delivery-zone__map {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.delivery-zone__map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ============================================
+   Reviews Section
+   ============================================ */
+.reviews {
+    padding: var(--spacing-xxl) 0 var(--spacing-xxl);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.reviews__title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-text);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.2;
+}
+
+.reviews__title--highlight {
+    color: var(--color-primary);
+}
+
+.reviews__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.review-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid rgba(0, 200, 200, 0.2);
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 16px rgba(0, 200, 200, 0.2);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.review-card__image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+    border: 3px solid var(--color-primary);
+    flex-shrink: 0;
+}
+
+.review-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.review-card__content {
+    flex: 1;
+}
+
+.review-card__name {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.review-card__text {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.review-card__rating {
+    font-size: 1.25rem;
+    color: #FFD700;
+    margin: 0;
+}
+
+.reviews__cta {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: var(--spacing-xxl) 0 var(--spacing-md);
+    margin-top: 0;
+}
+
+.footer__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    /* Desktop: grid-template-columns: repeat(3, 1fr) */
+}
+
+.footer__column {
+    /* Dodati stilove kasnije */
+    display: block;
+}
+
+.footer__title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+.footer__text {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.footer__list {
+    list-style: none;
+}
+
+.footer__item {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer__link {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.footer__link:hover {
+    color: var(--color-primary);
+}
+
+.footer__bottom {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__copyright {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer__legal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.footer__legal-link {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    cursor: default;
+}
+
+.footer__legal-link a {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.footer__legal-link a:hover {
+    color: var(--color-primary);
+}
+
+.footer__legal-separator {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    opacity: 0.5;
+}
+
+/* ============================================
+   Responsive - Tablet i Desktop
+   ============================================ */
+
+/* Desktop (1200px i više) – tablet (uključujući iPad Pro) ostaje na hamburgeru */
+@media (min-width: 1200px) {
+    :root {
+        --container-padding: 2rem;
+    }
+    
+    .why-text-mobile {
+        display: none;
+    }
+    .why-text-desktop {
+        display: inline;
+    }
+    
+    .header {
+        max-width: none;
+    }
+    
+    .header .container {
+        max-width: none;
+        width: 100%;
+        padding-left: calc(var(--container-padding) * 1.5);
+        padding-right: calc(var(--container-padding) * 1.5);
+    }
+    
+    .header__nav {
+        position: static;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+        flex: 1;
+        margin: 0 var(--spacing-lg);
+        padding: 0;
+        box-shadow: none;
+        transform: translateX(0);
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        overflow: visible;
+    }
+    
+    .header__nav.nav--open {
+        transform: translateX(0);
+    }
+    
+    .nav__item {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .nav__list {
+        flex-direction: row;
+        gap: var(--spacing-lg);
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .header__menu-toggle {
+        display: none;
+    }
+    
+    .nav__apps {
+        display: none;
+    }
+    
+    .nav__cta {
+        display: none;
+    }
+    
+    .header__logo {
+        margin-left: 12px;
+    }
+    
+    .logo-img {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .nav-overlay {
+        display: none;
+    }
+    
+    .logo-img {
+        width: 115px;
+        height: 115px;
+    }
+    
+    .header__profile-img {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .hero__title {
+        font-size: 2.5rem;
+    }
+    
+    .section__title {
+        font-size: 2rem;
+    }
+    
+    .product-box {
+        width: 220px;
+        height: 320px;
+    }
+    
+    .product-box__image {
+        height: calc(320px * 0.7);
+    }
+    
+    /* Why AlcoGo - desktop vraćen na mobilni stil (jedan ispod drugog) */
+    .why-alcogo__list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .why-alcogo__item {
+        align-items: center;
+        padding: var(--spacing-md);
+        background-color: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        border-left: 4px solid var(--color-primary);
+    }
+    
+    /* Reviews - rastered spacing i poravnanje */
+    .reviews__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--spacing-lg);
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto var(--spacing-xl);
+        align-items: stretch;
+    }
+    
+    .review-card {
+        align-items: flex-start;
+        text-align: left;
+        padding: var(--spacing-lg);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        max-width: none;
+        width: 100%;
+    }
+    
+    .review-card__content {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    /* Delivery mapa - manja širina na desktopu */
+    .delivery-zone__map {
+        max-width: 900px;
+    }
+    
+    .how-it-works__title {
+        font-size: 2.5rem;
+    }
+    
+    .how-it-works__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .how-it-works__icon {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .how-it-works__icon-img {
+        width: 140px;
+        height: 140px;
+    }
+    
+    #icon1 {
+        width: 180px;
+        height: 180px;
+        margin-left: 18px;
+        margin-top: 10px;
+    }
+    
+    #icon3 {
+        width: 155px;
+        height: 155px;
+    }
+    
+    .why-alcogo__title {
+        font-size: 2.5rem;
+    }
+    
+    .why-alcogo__emoji {
+        font-size: 3rem;
+    }
+    
+    .why-alcogo__text {
+        font-size: 1.5rem;
+    }
+    
+    .why-text-mobile {
+        display: none;
+    }
+    .why-text-desktop {
+        display: inline;
+    }
+    
+    .delivery-zone__title {
+        font-size: 2.5rem;
+    }
+    
+    .reviews__title {
+        font-size: 2.5rem;
+    }
+    
+    .review-card__image {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .footer__content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop (1024px i više) */
+@media (min-width: 1024px) {
+    .hero__title {
+        font-size: 3rem;
+    }
+    
+    .how-it-works__title {
+        font-size: 3rem;
+    }
+    
+    .how-it-works__icon {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .how-it-works__icon-img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    #icon1 {
+        width: 190px;
+        height: 190px;
+        margin-left: 20px;
+        margin-top: 12px;
+    }
+    
+    #icon3 {
+        width: 165px;
+        height: 165px;
+    }
+    
+    .why-alcogo__title {
+        font-size: 3rem;
+    }
+    
+    .why-alcogo__emoji {
+        font-size: 3.5rem;
+    }
+    
+    .why-alcogo__text {
+        font-size: 1.75rem;
+    }
+    
+    .section__title {
+        font-size: 2.25rem;
+    }
+    
+    .product-box {
+        width: 250px;
+        height: 360px;
+    }
+    
+    .product-box__image {
+        height: calc(360px * 0.7);
+    }
+    
+    .delivery-zone__title {
+        font-size: 3rem;
+    }
+    
+    .reviews__title {
+        font-size: 3rem;
+    }
+    
+    .review-card__image {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .review-card__name {
+        font-size: 1.5rem;
+    }
+    
+    .review-card__text {
+        font-size: 1.125rem;
+    }
+    
+    .logo-img {
+        width: 115px;
+        height: 115px;
+    }
+    
+    .header__profile-img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .header__left {
+        gap: var(--spacing-md);
+    }
+}
+
+/* ============================================
+   Utility classes - za kasnije dodavanje
+   ============================================ */
+
+/* Dodati utility klase po potrebi:
+   - .text-center
+   - .mb-1, .mb-2, itd.
+   - .hidden
+   - .visible
+   - itd.
+*/
+

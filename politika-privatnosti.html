@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AlcoGo - Politika privatnosti">
+    <title>Politika Privatnosti - AlcoGo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="katalog.css">
+    <style>
+        .terms-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-dark-bg);
+            min-height: calc(100vh - 70px);
+        }
+
+        .terms__container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .terms__title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--color-text);
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .terms__subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.25rem;
+            text-align: center;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .terms__date {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .terms__content {
+            font-family: 'Lato', sans-serif;
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .terms__section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .terms__section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .terms__subsection-title {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .terms__paragraph {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-secondary);
+        }
+
+        .terms__list {
+            margin-left: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-secondary);
+        }
+
+        .terms__list-item {
+            margin-bottom: var(--spacing-xs);
+            list-style-type: disc;
+        }
+
+        .terms__highlight {
+            background-color: rgba(0, 200, 200, 0.1);
+            padding: var(--spacing-md);
+            border-left: 4px solid var(--color-primary);
+            border-radius: 8px;
+            margin: var(--spacing-md) 0;
+        }
+
+        .terms__warning {
+            background-color: rgba(255, 68, 68, 0.1);
+            padding: var(--spacing-md);
+            border-left: 4px solid #FF4444;
+            border-radius: 8px;
+            margin: var(--spacing-md) 0;
+            font-weight: 600;
+        }
+
+        .terms__checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .terms__checklist-item {
+            margin-bottom: var(--spacing-xs);
+            padding-left: var(--spacing-md);
+            position: relative;
+        }
+
+        .terms__checklist-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .terms__contact-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .terms__contact-item {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .terms__contact-label {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .terms__cross-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .terms__cross-item {
+            margin-bottom: var(--spacing-xs);
+            padding-left: var(--spacing-md);
+            position: relative;
+        }
+
+        .terms__cross-item:before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+
+        @media (min-width: 768px) {
+            .terms__title {
+                font-size: 3rem;
+            }
+
+            .terms__section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header sa logoom i navigacijom -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Leva strana: Hamburger meni i Logo -->
+                <div class="header__left">
+                    <!-- Mobile menu toggle -->
+                    <button class="header__menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="menu-toggle__line"></span>
+                        <span class="menu-toggle__line"></span>
+                        <span class="menu-toggle__line"></span>
+                    </button>
+                    
+                    <!-- Logo -->
+                    <div class="header__logo">
+                        <a href="index.html" class="logo-link">
+                            <img src="img/logo.png" alt="AlcoGo Logo" class="logo-img">
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Navigacija -->
+                <nav class="header__nav" id="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="index.html" class="nav__link">Početna</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="katalog.html" class="nav__link">Katalog</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="index.html#korpa" class="nav__link">Korpa</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="index.html#kako-funkcionisemo" class="nav__link">Kako Funkcionisemo</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="index.html#recenzije" class="nav__link">Recenzije</a>
+                        </li>
+                    </ul>
+                    <div class="nav__cta">
+                        <a href="index.html#naruci" class="btn btn--primary">NARUCI SADA</a>
+                    </div>
+                    <div class="nav__apps">
+                        <a href="#" class="nav__app-link" onclick="showAppPopup(event)">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&releaseDate=1289520000" alt="Download on the App Store" class="nav__app-img">
+                        </a>
+                        <a href="#" class="nav__app-link" onclick="showAppPopup(event)">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="nav__app-img">
+                        </a>
+                    </div>
+                </nav>
+                
+                <!-- Overlay za zatvaranje menija -->
+                <div class="nav-overlay" id="navOverlay"></div>
+                
+                <!-- Desna strana: Profil ikonica -->
+                <div class="header__right">
+                    <a href="#" class="header__profile-link" aria-label="Profil" onclick="showAccountPopup(event)">
+                        <img src="img/mojprofil.png" alt="Profil" class="header__profile-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Politika Privatnosti Section -->
+    <section class="terms-section">
+        <div class="terms__container">
+            <h1 class="terms__title">POLITIKA PRIVATNOSTI</h1>
+            <p class="terms__subtitle">AlcoGo - Dostava alkoholnih pića 24/7</p>
+            <p class="terms__date">Datum poslednje izmene: 25. novembar 2025.</p>
+
+            <div class="terms__content">
+                <!-- 1. UVOD -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">1. UVOD</h2>
+                    
+                    <h3 class="terms__subsection-title">1.1 O ovoj politici</h3>
+                    <p class="terms__paragraph">
+                        Ova Politika privatnosti objašnjava kako AlcoGo prikuplja, koristi i štiti vaše lične podatke prilikom korišćenja naših usluga dostave alkoholnih pića.
+                    </p>
+
+                    <h3 class="terms__subsection-title">1.2 Pravni okvir</h3>
+                    <p class="terms__paragraph">Postupamo u skladu sa:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Zakonom o zaštiti podataka o ličnosti Republike Srbije ("Sl. glasnik RS", br. 87/2018)</li>
+                        <li class="terms__list-item">Opštom uredbom o zaštiti podataka (GDPR EU 2016/679)</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">1.3 Vaše pravo</h3>
+                    <p class="terms__paragraph">
+                        Korišćenjem naših usluga prihvatate ovu Politiku privatnosti. Ako se ne slažete, nemojte koristiti naše usluge.
+                    </p>
+                </div>
+
+                <!-- 2. KO SMO MI -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">2. KO SMO MI</h2>
+                    
+                    <p class="terms__paragraph">Rukovalac ličnih podataka:</p>
+                    <div class="terms__contact-info">
+                        <p class="terms__contact-item"><span class="terms__contact-label">AlcoGo</span></p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">Adresa:</span> [Unesite punu adresu]</p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">PIB:</span> [Unesite PIB]</p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">Matični broj:</span> [Unesite matični broj]</p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">Email:</span> [Unesite email]</p>
+                        <p class="terms__contact-item"><span class="terms__contact-label">Telefon:</span> [Unesite telefon]</p>
+                    </div>
+                    <p class="terms__paragraph">Za pitanja o privatnosti kontaktirajte:</p>
+                    <p class="terms__paragraph">Email: privacy@alcogo.rs [ili vaš email za privatnost]</p>
+                </div>
+
+                <!-- 3. KOJE PODATKE PRIKUPLJAMO -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">3. KOJE PODATKE PRIKUPLJAMO</h2>
+                    
+                    <h3 class="terms__subsection-title">3.1 Podaci koje nam dajete pri naručivanju</h3>
+                    <p class="terms__paragraph">Kada naručite proizvode, prikupljamo:</p>
+                    <ul class="terms__checklist">
+                        <li class="terms__checklist-item">Ime i prezime - da znamo kome dostavljamo</li>
+                        <li class="terms__checklist-item">Broj telefona - da vas pozovemo za potvrdu narudžbine</li>
+                        <li class="terms__checklist-item">Adresa dostave - da znamo gde da donesemo proizvode</li>
+                        <li class="terms__checklist-item">Datum i vreme narudžbine - za obradu i dostavu</li>
+                        <li class="terms__checklist-item">Naručeni proizvodi - šta ste poručili</li>
+                        <li class="terms__checklist-item">Iznos narudžbine - za fiskalni račun</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">3.2 Podaci za verifikaciju punoletnosti</h3>
+                    <div class="terms__highlight">
+                        <p class="terms__paragraph">Pri dostavi, dostavljač proverava:</p>
+                        <ul class="terms__checklist">
+                            <li class="terms__checklist-item">Broj lične karte/pasoša/vozačke dozvole - samo za trenutnu proveru da li ste 18+</li>
+                            <li class="terms__checklist-item">Datum rođenja - vidljiv na dokumentu</li>
+                        </ul>
+                        <p class="terms__paragraph" style="margin-top: var(--spacing-sm); font-weight: 600;">VAŽNO: Ne fotografišemo i ne čuvamo vaše dokumente! Dostavljač samo pogleda da li ste punoletni.</p>
+                    </div>
+
+                    <h3 class="terms__subsection-title">3.3 Podaci koje automatski prikupljamo</h3>
+                    <p class="terms__paragraph">Kada koristite našu platformu (web/aplikacija), automatski prikupljamo:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">IP adresa - za bezbednost i analitiku</li>
+                        <li class="terms__list-item">Tip uređaja i pretraživača - da optimizujemo platformu</li>
+                        <li class="terms__list-item">Vreme pristupa - za statistiku</li>
+                        <li class="terms__list-item">Lokacija (približna) - da proverim da li dostavljamo u vašu zonu</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">3.4 ŠTA NE PRIKUPLJAMO</h3>
+                    <ul class="terms__cross-list">
+                        <li class="terms__cross-item">Ne tražimo registraciju ili nalog</li>
+                        <li class="terms__cross-item">Ne tražimo email (osim ako ga sami date)</li>
+                        <li class="terms__cross-item">Ne čuvamo podatke o platnim karticama</li>
+                        <li class="terms__cross-item">Ne fotografišemo vaše lične dokumente</li>
+                        <li class="terms__cross-item">Ne pratimo vaše kretanje van naše platforme</li>
+                    </ul>
+                </div>
+
+                <!-- 4. KAKO KORISTIMO VAŠE PODATKE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">4. KAKO KORISTIMO VAŠE PODATKE</h2>
+                    
+                    <h3 class="terms__subsection-title">4.1 Svrhe obrade</h3>
+                    <p class="terms__paragraph">Vaše podatke koristimo SAMO za:</p>
+                    
+                    <p class="terms__paragraph" style="font-weight: 600; margin-top: var(--spacing-md);">1. Procesiranje i dostavu narudžbine</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Da vas pozovemo i potvrdimo narudžbinu</li>
+                        <li class="terms__list-item">Da pošaljemo dostavljača na vašu adresu</li>
+                        <li class="terms__list-item">Da isporučimo proizvode</li>
+                    </ul>
+                    <p class="terms__paragraph"><em>Pravna osnova: Izvršenje ugovora (vi naručite, mi dostavimo)</em></p>
+
+                    <p class="terms__paragraph" style="font-weight: 600; margin-top: var(--spacing-md);">2. Izrada fiskalnog računa</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Moramo izdati fiskalni račun po zakonu</li>
+                        <li class="terms__list-item">Račun sadrži vaše ime, datum, proizvode i iznos</li>
+                    </ul>
+                    <p class="terms__paragraph"><em>Pravna osnova: Zakonska obaveza (Zakon o porezu na dodatu vrednost, Zakon o fiskalnim kasama)</em></p>
+
+                    <p class="terms__paragraph" style="font-weight: 600; margin-top: var(--spacing-md);">3. Provera punoletnosti</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Dostavljač proverava vaš dokument pri dostavi</li>
+                        <li class="terms__list-item">Samo da se uveri da ste 18+ godina</li>
+                    </ul>
+                    <p class="terms__paragraph"><em>Pravna osnova: Zakonska obaveza (zabrana prodaje alkohola maloletnicima)</em></p>
+
+                    <p class="terms__paragraph" style="font-weight: 600; margin-top: var(--spacing-md);">4. Evidencija narudžbina</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Čuvamo istoriju narudžbina za računovodstvo</li>
+                        <li class="terms__list-item">Moramo čuvati 5 godina po zakonu</li>
+                    </ul>
+                    <p class="terms__paragraph"><em>Pravna osnova: Zakonska obaveza (računovodstveni propisi)</em></p>
+
+                    <p class="terms__paragraph" style="font-weight: 600; margin-top: var(--spacing-md);">5. Rešavanje problema</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Ako imate reklamaciju, koristimo podatke da rešimo problem</li>
+                    </ul>
+                    <p class="terms__paragraph"><em>Pravna osnova: Legitimni interes (kvalitetna usluga)</em></p>
+
+                    <h3 class="terms__subsection-title">4.2 ŠTA NE RADIMO sa vašim podacima</h3>
+                    <ul class="terms__cross-list">
+                        <li class="terms__cross-item">Ne šaljemo marketing poruke (osim ako ne zatražite)</li>
+                        <li class="terms__cross-item">Ne prodajemo podatke trećim licima</li>
+                        <li class="terms__cross-item">Ne delimo podatke osim sa dostavljačima (koji vam donose narudžbinu)</li>
+                        <li class="terms__cross-item">Ne pravimo profile kupaca</li>
+                        <li class="terms__cross-item">Ne praćujemo vas na društvenim mrežama</li>
+                    </ul>
+                </div>
+
+                <!-- 5. SA KIM DELIMO VAŠE PODATKE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">5. SA KIM DELIMO VAŠE PODATKE</h2>
+                    
+                    <h3 class="terms__subsection-title">5.1 Dostavljači</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Moramo da damo vaše ime, broj telefona i adresu našim dostavljačima</li>
+                        <li class="terms__list-item">Inače ne bi mogli da vam dostave narudžbinu</li>
+                        <li class="terms__list-item">Dostavljači su ugovorni obavezani da čuvaju vaše podatke</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">5.2 Računovodstveni servisi</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Fakture obrađujemo preko računovodstvenih servisa</li>
+                        <li class="terms__list-item">Oni čuvaju podatke bezbedno</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">5.3 IT hosting provajderi</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Vaši podaci su na sigurnim serverima</li>
+                        <li class="terms__list-item">Server provajderi su ugovornim obavezani da štite podatke</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">5.4 Državni organi</h3>
+                    <p class="terms__paragraph">Podatke možemo deliti sa organima vlasti samo ako:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">To zahteva zakon ili sudski nalog</li>
+                        <li class="terms__list-item">Policija zatraži u okviru istrage</li>
+                        <li class="terms__list-item">Poreska uprava zatraži uvid u fakture</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">5.5 KO NE DOBIJA vaše podatke</h3>
+                    <ul class="terms__cross-list">
+                        <li class="terms__cross-item">Marketing agencije</li>
+                        <li class="terms__cross-item">Društvene mreže</li>
+                        <li class="terms__cross-item">Brokeri podataka</li>
+                        <li class="terms__cross-item">Druge kompanije za bilo šta sem gore navedeno</li>
+                    </ul>
+                </div>
+
+                <!-- 6. KOLIKO DUGO ČUVAMO PODATKE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">6. KOLIKO DUGO ČUVAMO PODATKE</h2>
+                    
+                    <h3 class="terms__subsection-title">6.1 Podaci o narudžbini</h3>
+                    <div class="terms__highlight">
+                        <p class="terms__paragraph" style="font-weight: 600; margin-bottom: var(--spacing-sm);">5 godina - moramo čuvati zbog:</p>
+                        <ul class="terms__list">
+                            <li class="terms__list-item">Poreskih obaveza</li>
+                            <li class="terms__list-item">Računovodstvenih propisa</li>
+                            <li class="terms__list-item">Potencijalnih reklamacija</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="terms__subsection-title">6.2 Podaci o dokumentima (provera punoletnosti)</h3>
+                    <div class="terms__highlight">
+                        <p class="terms__paragraph" style="font-weight: 600; margin-bottom: var(--spacing-sm);">0 dana - NE ČUVAMO vaše dokumente!</p>
+                        <ul class="terms__list">
+                            <li class="terms__list-item">Dostavljač samo pogleda dokument</li>
+                            <li class="terms__list-item">Ništa ne fotografiše</li>
+                            <li class="terms__list-item">Ništa ne zapisuje</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="terms__subsection-title">6.3 Tehnički logovi (IP adrese, itd.)</h3>
+                    <p class="terms__paragraph">Do 12 meseci - za bezbednost platforme</p>
+
+                    <h3 class="terms__subsection-title">6.4 Vaše pravo na brisanje</h3>
+                    <p class="terms__paragraph">Možete zatražiti brisanje podataka, ali:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Ne možemo obrisati fakture i narudžbine (moramo čuvati 5 godina po zakonu)</li>
+                        <li class="terms__list-item">Možemo obrisati kontakt podatke nakon isteka zakonskog roka</li>
+                    </ul>
+                </div>
+
+                <!-- 7. VAŠA PRAVA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">7. VAŠA PRAVA</h2>
+                    <p class="terms__paragraph">U skladu sa zakonom, imate sledeća prava:</p>
+                    
+                    <h3 class="terms__subsection-title">7.1 ✅ Pravo na pristup</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Imate pravo da saznate koje podatke imamo o vama</li>
+                        <li class="terms__list-item">Možete zatražiti kopiju svojih podataka</li>
+                    </ul>
+                    <p class="terms__paragraph"><strong>Kako:</strong> Pošaljite email na privacy@alcogo.rs</p>
+
+                    <h3 class="terms__subsection-title">7.2 ✅ Pravo na ispravku</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Ako su podaci netačni, možete ih ispraviti</li>
+                        <li class="terms__list-item">Kontaktirajte nas da izmenimo podatke</li>
+                    </ul>
+                    <p class="terms__paragraph"><strong>Kako:</strong> Pozovite nas ili pošaljite email</p>
+
+                    <h3 class="terms__subsection-title">7.3 ✅ Pravo na brisanje</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Možete zatražiti brisanje podataka nakon isteka zakonskog roka čuvanja (5 godina)</li>
+                        <li class="terms__list-item">Ne možemo obrisati fakture koje moramo čuvati po zakonu</li>
+                    </ul>
+                    <p class="terms__paragraph"><strong>Kako:</strong> Pošaljite zahtev na privacy@alcogo.rs</p>
+
+                    <h3 class="terms__subsection-title">7.4 ✅ Pravo na ograničenje obrade</h3>
+                    <p class="terms__paragraph">Možete zatražiti da ograničimo obradu u određenim situacijama</p>
+
+                    <h3 class="terms__subsection-title">7.5 ✅ Pravo na prigovor</h3>
+                    <p class="terms__paragraph">Možete prigovoriti ako koristimo podatke za marketing (što ne radimo bez vašeg pristanka)</p>
+
+                    <h3 class="terms__subsection-title">7.6 ✅ Pravo na prenosivost</h3>
+                    <p class="terms__paragraph">Možete dobiti svoje podatke u strukturisanom formatu (Excel, PDF)</p>
+
+                    <h3 class="terms__subsection-title">7.7 ✅ Pravo na opoziv pristanka</h3>
+                    <p class="terms__paragraph">Ako ste dali pristanak za marketing, možete ga opozvati bilo kad</p>
+
+                    <h3 class="terms__subsection-title">7.8 ✅ Pravo na žalbu</h3>
+                    <p class="terms__paragraph">Ako niste zadovoljni, možete podneti žalbu:</p>
+                    <div class="terms__contact-info">
+                        <p class="terms__contact-item"><span class="terms__contact-label">Poverenik za informacije od javnog značaja i zaštitu podataka o ličnosti</span></p>
+                        <p class="terms__contact-item">📍 <span class="terms__contact-label">Adresa:</span> Bulevar kralja Aleksandra 15, 11000 Beograd</p>
+                        <p class="terms__contact-item">📞 <span class="terms__contact-label">Telefon:</span> +381 11 3408-900</p>
+                        <p class="terms__contact-item">📧 <span class="terms__contact-label">Email:</span> office@poverenik.rs</p>
+                        <p class="terms__contact-item">🌐 <span class="terms__contact-label">Web:</span> www.poverenik.rs</p>
+                    </div>
+
+                    <h3 class="terms__subsection-title">7.9 Vreme odgovora</h3>
+                    <p class="terms__paragraph">Odgovaramo na vaše zahteve u roku od 30 dana.</p>
+                </div>
+
+                <!-- 8. BEZBEDNOST PODATAKA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">8. BEZBEDNOST PODATAKA</h2>
+                    
+                    <h3 class="terms__subsection-title">8.1 Kako štitimo vaše podatke</h3>
+                    <p class="terms__paragraph" style="font-weight: 600; margin-bottom: var(--spacing-sm);">Tehničke mere:</p>
+                    <ul class="terms__checklist">
+                        <li class="terms__checklist-item">🔒 SSL enkripcija - bezbedna komunikacija</li>
+                        <li class="terms__checklist-item">🔑 Heširane lozinke - ako budete imali naloge u budućnosti</li>
+                        <li class="terms__checklist-item">🛡️ Firewall i antivirus - zaštita servera</li>
+                        <li class="terms__checklist-item">💾 Redovne backup kopije - da ne izgubimo podatke</li>
+                        <li class="terms__checklist-item">🔄 Redovna ažuriranja - bezbednosni zakrpa sistema</li>
+                    </ul>
+
+                    <p class="terms__paragraph" style="font-weight: 600; margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Organizacione mere:</p>
+                    <ul class="terms__checklist">
+                        <li class="terms__checklist-item">👥 Samo ovlašćeni zaposleni imaju pristup podacima</li>
+                        <li class="terms__checklist-item">📝 Ugovori o poverljivosti sa zaposlenima i partnerima</li>
+                        <li class="terms__checklist-item">📚 Obuka zaposlenih o zaštiti podataka</li>
+                        <li class="terms__checklist-item">🚨 Procedura za slučaj incidenta</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">8.2 Sigurno plaćanje</h3>
+                    <div class="terms__highlight">
+                        <p class="terms__paragraph">Plaćanje je POUZEĆEM (gotovina ili kartica kod dostavljača)</p>
+                        <p class="terms__paragraph">Ne prikupljamo podatke o platnim karticama</p>
+                    </div>
+
+                    <h3 class="terms__subsection-title">8.3 Vaša odgovornost</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Čuvajte svoj telefon</li>
+                        <li class="terms__list-item">Ne delite lične podatke sa nepoznatim licima</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">8.4 Incident sa podacima</h3>
+                    <p class="terms__paragraph">Ako dođe do povrede bezbednosti podataka:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Obavestićemo vas u roku od 72 sata</li>
+                        <li class="terms__list-item">Obavestićemo Poverenika za zaštitu podataka</li>
+                        <li class="terms__list-item">Preduzeće sve mere da se problem reši</li>
+                    </ul>
+                </div>
+
+                <!-- 9. KOLAČIĆI (COOKIES) -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">9. KOLAČIĆI (COOKIES)</h2>
+                    
+                    <h3 class="terms__subsection-title">9.1 Šta su kolačići</h3>
+                    <p class="terms__paragraph">Male datoteke koje se čuvaju na vašem uređaju kada posetite našu platformu.</p>
+
+                    <h3 class="terms__subsection-title">9.2 Koje kolačiće koristimo</h3>
+                    <p class="terms__paragraph" style="font-weight: 600; margin-bottom: var(--spacing-sm);">Neophodni kolačići:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Za osnovnu funkcionalnost platforme (košarica, navigacija)</li>
+                        <li class="terms__list-item">Ne možete ih odbiti ako želite da koristite platformu</li>
+                    </ul>
+
+                    <p class="terms__paragraph" style="font-weight: 600; margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Analitički kolačići:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Pratimo kako koristite platformu (Google Analytics)</li>
+                        <li class="terms__list-item">Anonimni podaci - ne znamo ko ste</li>
+                    </ul>
+
+                    <p class="terms__paragraph" style="font-weight: 600; margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Marketing kolačići:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Trenutno ih ne koristimo</li>
+                        <li class="terms__list-item">Ako budemo u budućnosti, tražićemo pristanak</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">9.3 Kako upravljati kolačićima</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Možete podesiti pretraživač da odbija kolačiće</li>
+                        <li class="terms__list-item">Možete obrisati kolačiće</li>
+                        <li class="terms__list-item">Ali to može uticati na funkcionalnost platforme</li>
+                    </ul>
+                </div>
+
+                <!-- 10. DECA I MALOLETNICI -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">10. DECA I MALOLETNICI</h2>
+                    
+                    <h3 class="terms__subsection-title">10.1 ⚠️ Naše usluge su SAMO za punoletne (18+)</h3>
+                    <div class="terms__warning">
+                        <ul class="terms__cross-list">
+                            <li class="terms__cross-item">Ne prikupljamo svesno podatke maloletnih lica</li>
+                            <li class="terms__cross-item">Ako saznamo da je korisnik maloletno lice, brišemo podatke</li>
+                            <li class="terms__cross-item">Roditelji: ako sumnjate da je vaše dete koristilo uslugu, kontaktirajte nas odmah</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 11. MARKETING KOMUNIKACIJA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">11. MARKETING KOMUNIKACIJA</h2>
+                    
+                    <h3 class="terms__subsection-title">11.1 Da li šaljemo marketing?</h3>
+                    <p class="terms__paragraph">Trenutno NE - ne šaljemo newsletter, SMS kampanje ili email marketing.</p>
+
+                    <h3 class="terms__subsection-title">11.2 Ako u budućnosti uvedemo</h3>
+                    <ul class="terms__checklist">
+                        <li class="terms__checklist-item">Tražićemo vaš EKSPLICITAN pristanak</li>
+                        <li class="terms__checklist-item">Moći ćete da se odjavite u bilo kom trenutku</li>
+                        <li class="terms__checklist-item">Nikada nećemo prodavati vašu email listu</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">11.3 Samo operativne poruke</h3>
+                    <p class="terms__paragraph">Šaljemo SAMO poruke vezane za vašu narudžbinu:</p>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">"Vaša narudžbina je potvrđena"</li>
+                        <li class="terms__list-item">"Dostavljač je na putu"</li>
+                        <li class="terms__list-item">"Dostava izvršena"</li>
+                    </ul>
+                </div>
+
+                <!-- 12. TRANSFER PODATAKA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">12. TRANSFER PODATAKA</h2>
+                    
+                    <h3 class="terms__subsection-title">12.1 Lokacija servera</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Podatke čuvamo na serverima u Republici Srbiji ili EU</li>
+                        <li class="terms__list-item">Ne prenosimo podatke van ovih zona</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">12.2 Ako budemo koristili servise van Srbije/EU</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Obezbedićemo odgovarajuće mere zaštite</li>
+                        <li class="terms__list-item">Koristićemo standardne ugovorne klauzule (SCC)</li>
+                    </ul>
+                </div>
+
+                <!-- 13. IZMENE POLITIKE PRIVATNOSTI -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">13. IZMENE POLITIKE PRIVATNOSTI</h2>
+                    
+                    <h3 class="terms__subsection-title">13.1 Pravo na izmenu</h3>
+                    <p class="terms__paragraph">Možemo izmeniti ovu Politiku u bilo kom trenutku.</p>
+
+                    <h3 class="terms__subsection-title">13.2 Obaveštenje o izmenama</h3>
+                    <ul class="terms__list">
+                        <li class="terms__list-item">Datum izmene će biti naveden na vrhu dokumenta</li>
+                        <li class="terms__list-item">Značajne izmene ćemo najaviti na platformi</li>
+                    </ul>
+
+                    <h3 class="terms__subsection-title">13.3 Nastavak korišćenja = prihvatanje</h3>
+                    <p class="terms__paragraph">Korišćenjem usluga nakon izmena, prihvatate novu Politiku privatnosti.</p>
+                </div>
+
+                <!-- 14. LINKOVI KA DRUGIM WEB SAJTOVIMA -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">14. LINKOVI KA DRUGIM WEB SAJTOVIMA</h2>
+                    
+                    <h3 class="terms__subsection-title">14.1 Spoljni sajtovi</h3>
+                    <p class="terms__paragraph">Naša platforma može sadržati linkove ka drugim sajtovima (društvene mreže, itd.).</p>
+
+                    <h3 class="terms__subsection-title">14.2 Nismo odgovorni</h3>
+                    <p class="terms__paragraph">Ne odgovaramo za politike privatnosti drugih sajtova. Pročitajte njihove politike.</p>
+                </div>
+
+                <!-- 15. KONTAKT ZA PITANJA O PRIVATNOSTI -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">15. KONTAKT ZA PITANJA O PRIVATNOSTI</h2>
+                    <p class="terms__paragraph">Za sva pitanja, komentare ili zahteve u vezi sa zaštitom podataka:</p>
+                    <div class="terms__contact-info">
+                        <p class="terms__contact-item">📧 <span class="terms__contact-label">Email:</span> privacy@alcogo.rs [ili vaš email]</p>
+                        <p class="terms__contact-item">📞 <span class="terms__contact-label">Telefon:</span> [Unesite telefon]</p>
+                        <p class="terms__contact-item">📍 <span class="terms__contact-label">Adresa:</span></p>
+                        <p class="terms__contact-item" style="margin-left: var(--spacing-md);">AlcoGo</p>
+                        <p class="terms__contact-item" style="margin-left: var(--spacing-md);">[Unesite ulicu i broj]</p>
+                        <p class="terms__contact-item" style="margin-left: var(--spacing-md);">[Unesite grad i poštanski broj]</p>
+                        <p class="terms__contact-item" style="margin-left: var(--spacing-md);">Republika Srbija</p>
+                    </div>
+                    <p class="terms__paragraph">Odgovaramo u roku od 5 radnih dana.</p>
+                </div>
+
+                <!-- 16. TRANSPARENTNOST I POVERENJE -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">16. TRANSPARENTNOST I POVERENJE</h2>
+                    <div class="terms__highlight">
+                        <p class="terms__paragraph">Cenimo vaše poverenje i posvećeni smo zaštiti vaše privatnosti. Trudimo se da:</p>
+                        <ul class="terms__checklist">
+                            <li class="terms__checklist-item">Budemo transparentni o tome kako koristimo podatke</li>
+                            <li class="terms__checklist-item">Prikupljamo SAMO neophodne podatke</li>
+                            <li class="terms__checklist-item">Nikada ne prodajemo vaše podatke</li>
+                            <li class="terms__checklist-item">Štitimo podatke odgovarajućim merama</li>
+                            <li class="terms__checklist-item">Poštujemo vaša prava</li>
+                        </ul>
+                        <p class="terms__paragraph" style="margin-top: var(--spacing-md); margin-bottom: 0; text-align: center; font-weight: 600;">
+                            Hvala vam na poverenju!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 17. ZAKLJUČAK -->
+                <div class="terms__section">
+                    <h2 class="terms__section-title">17. ZAKLJUČAK</h2>
+                    <p class="terms__paragraph">
+                        Ova Politika privatnosti je sačinjena da vam pruži potpunu transparentnost. Ako imate bilo kakvih pitanja ili nedoumica, slobodno nas kontaktirajte.
+                    </p>
+
+                    <div class="terms__highlight" style="margin-top: var(--spacing-xl);">
+                        <p class="terms__paragraph" style="margin-bottom: var(--spacing-sm);"><strong>PRAVNI OKVIR:</strong></p>
+                        <p class="terms__paragraph">Ova Politika privatnosti je sačinjena u skladu sa:</p>
+                        <ul class="terms__list">
+                            <li class="terms__list-item">Zakonom o zaštiti podataka o ličnosti Republike Srbije ("Sl. glasnik RS", br. 87/2018)</li>
+                            <li class="terms__list-item">Opštom uredbom o zaštiti podataka (GDPR EU 2016/679)</li>
+                            <li class="terms__list-item">Zakonom o elektronskoj trgovini ("Sl. glasnik RS", br. 41/2009, 95/2013, 52/2019)</li>
+                            <li class="terms__list-item">Drugim relevantnim propisima Republike Srbije</li>
+                        </ul>
+                        <p class="terms__paragraph" style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-xs); text-align: center;">
+                            Dokument kreiran: 25. novembar 2025.
+                        </p>
+                        <p class="terms__paragraph" style="margin-bottom: 0; text-align: center;">
+                            Verzija: 1.0
+                        </p>
+                        <p class="terms__paragraph" style="margin-top: var(--spacing-sm); margin-bottom: 0; text-align: center; font-weight: 600;">
+                            AlcoGo - Dostava alkohola 24/7 🍺🍷🥃
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__column">
+                    <h3 class="footer__title">O nama</h3>
+                    <p class="footer__text">
+                        AlcoGo je brza dostava pića koja radi onda kada drugi ne rade. Jednostavno poruči, mi stižemo.
+                    </p>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Brzi linkovi</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a href="index.html" class="footer__link">Početna</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="katalog.html" class="footer__link">Katalog</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="index.html#recenzije" class="footer__link">Recenzije</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Kontakt</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <span class="footer__text">Email: info@alcogo.com</span>
+                        </li>
+                        <li class="footer__item">
+                            <span class="footer__text">Telefon: +381 12 345 6789</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; <span id="currentYear"></span> AlcoGo. Sva prava zadržana.
+                </p>
+                <div class="footer__legal">
+                    <a href="politika-privatnosti.html" class="footer__legal-link">Politika privatnosti</a>
+                    <span class="footer__legal-separator">|</span>
+                    <a href="uslovi-koriscenja.html" class="footer__legal-link">Uslovi korišćenja</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popups -->
+    <div class="popup" id="appPopup">
+        <div class="popup__content">
+            <span class="popup__close" onclick="closeAppPopup()">&times;</span>
+            <p>Izrada aplikacije u toku...</p>
+        </div>
+    </div>
+
+    <div class="popup" id="accountPopup">
+        <div class="popup__content">
+            <span class="popup__close" onclick="closeAccountPopup()">&times;</span>
+            <p>Nalozi i benificije stalnih korisnika uskoro...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Postavljanje trenutne godine u copyright
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        (function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('nav');
+            const overlay = document.getElementById('navOverlay');
+            const body = document.body;
+            
+            if (!menuToggle || !nav) return;
+            
+            function toggleMenu() {
+                const isOpen = nav.classList.contains('nav--open');
+                
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+            
+            function openMenu() {
+                nav.classList.add('nav--open');
+                menuToggle.classList.add('menu-toggle--active');
+                if (overlay) overlay.classList.add('nav-overlay--active');
+                body.style.overflow = 'hidden';
+            }
+            
+            function closeMenu() {
+                nav.classList.remove('nav--open');
+                menuToggle.classList.remove('menu-toggle--active');
+                if (overlay) overlay.classList.remove('nav-overlay--active');
+                body.style.overflow = '';
+            }
+            
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+            
+            const navLinks = nav.querySelectorAll('.nav__link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMenu();
+                });
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
+                    closeMenu();
+                }
+            });
+        })();
+
+        // Popup functions
+        function showAppPopup(event) {
+            event.preventDefault();
+            document.getElementById('appPopup').style.display = 'flex';
+        }
+
+        function closeAppPopup() {
+            document.getElementById('appPopup').style.display = 'none';
+        }
+
+        function showAccountPopup(event) {
+            event.preventDefault();
+            document.getElementById('accountPopup').style.display = 'flex';
+        }
+
+        function closeAccountPopup() {
+            document.getElementById('accountPopup').style.display = 'none';
+        }
+
+        // Close popup when clicking outside
+        window.addEventListener('click', function(event) {
+            const appPopup = document.getElementById('appPopup');
+            const accountPopup = document.getElementById('accountPopup');
+            if (event.target === appPopup) {
+                closeAppPopup();
+            }
+            if (event.target === accountPopup) {
+                closeAccountPopup();
+            }
+        });
+    </script>
+</body>
+</html>
+
