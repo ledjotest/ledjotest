@@ -457,6 +457,31 @@
     margin-bottom: var(--spacing-md);
 }
 
+.cart-form__row {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.cart-form__group--half {
+    flex: 1;
+    min-width: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.cart-form__notice {
+    margin: 0 0 var(--spacing-md) 0;
+    padding: var(--spacing-sm);
+    border-radius: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    color: #FF4444;
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid rgba(255, 68, 68, 0.35);
+}
+
 .cart-form__label {
     display: block;
     font-family: 'Lato', sans-serif;
