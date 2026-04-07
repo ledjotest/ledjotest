@@ -34,7 +34,7 @@ const products = [
     { id: 28, name: 'Stella Artois limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/stella 05.png' },
 
     // Ostalo
-    { id: 100, name: 'Jagermeister 0.7l', price: 2649, category: 'jeger', image: 'img/ostalo/Jagermeister 07.png' },
+    { id: 100, name: 'Jagermeister 0.7l', price: 2649, category: 'liker', image: 'img/ostalo/Jagermeister 07.png' },
     { id: 101, name: 'Beefeater pink 0.7l', price: 1749, category: 'gin', image: 'img/ostalo/Beefeater pink.png' },
     { id: 102, name: 'Beefeater 0.7l', price: 1799, category: 'gin', image: 'img/ostalo/beefeater 07.webp' },
 ];
