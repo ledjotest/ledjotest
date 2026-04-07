@@ -482,6 +482,14 @@
     border: 1px solid rgba(255, 68, 68, 0.35);
 }
 
+.cart-form__notice.cart-form__notice--soon {
+    color: var(--color-primary);
+    background: rgba(0, 200, 200, 0.12);
+    border: 1px solid rgba(0, 200, 200, 0.35);
+    text-align: center;
+    font-weight: 600;
+}
+
 .cart-form__label {
     display: block;
     font-family: 'Lato', sans-serif;
