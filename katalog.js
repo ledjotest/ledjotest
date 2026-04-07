@@ -43,6 +43,13 @@ let cart = [];
 let selectedCategory = null; // Single select - samo jedna kategorija
 let currentPriceMax = 10000;
 let currentSort = 'name-asc';
+const MIN_ORDER_RSD = 1000;
+
+function setMinOrderNoticeVisible(isVisible) {
+    const notice = document.getElementById('minOrderNotice');
+    if (!notice) return;
+    notice.classList.toggle('hidden', !isVisible);
+}
 
 function openCartOverlay() {
     const cartOverlay = document.getElementById('cartOverlay');
@@ -256,6 +263,7 @@ function updateCart() {
     updateCartIcon();
     renderCart();
     saveCart();
+    setMinOrderNoticeVisible(false);
 }
 
 // Update korpa ikonica
@@ -439,15 +447,20 @@ function handleOrder() {
     const nameInput = document.getElementById('customerName');
     const phoneInput = document.getElementById('customerPhone');
     const addressInput = document.getElementById('customerAddress');
+    const apartmentInput = document.getElementById('customerApartment');
+    const floorInput = document.getElementById('customerFloor');
     const agreementInput = document.getElementById('cartAgreement');
     
     const name = nameInput.value.trim();
     const phone = phoneInput.value.trim();
     const address = addressInput.value.trim();
+    const apartment = apartmentInput ? apartmentInput.value.trim() : '';
+    const floor = floorInput ? floorInput.value.trim() : '';
     const agreement = agreementInput.checked;
     
     // Reset error stanja
     clearErrors();
+    setMinOrderNoticeVisible(false);
     
     let hasErrors = false;
     
@@ -471,6 +484,13 @@ function handleOrder() {
         addressInput.classList.add('error');
         hasErrors = true;
     }
+
+    // Validacija broja stana
+    if (!apartment) {
+        showError('errorApartment', 'Niste popunili polje');
+        if (apartmentInput) apartmentInput.classList.add('error');
+        hasErrors = true;
+    }
     
     // Validacija checkbox-a
     if (!agreement) {
@@ -489,6 +509,10 @@ function handleOrder() {
     }
     
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    if (subtotal < MIN_ORDER_RSD) {
+        setMinOrderNoticeVisible(true);
+        return;
+    }
     const deliveryFee = 150;
     const total = subtotal + deliveryFee;
     
@@ -497,6 +521,8 @@ function handleOrder() {
         name,
         phone,
         address,
+        apartment,
+        floor,
         items: cart.map(item => ({
             id: item.id,
             name: item.name,
@@ -527,6 +553,7 @@ function handleOrder() {
     }
     document.body.style.overflow = '';
     clearErrors();
+    setMinOrderNoticeVisible(false);
     
     // Prelazak na stranicu zahvalnosti
     window.location.href = 'hvala.html';
