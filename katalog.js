@@ -19,10 +19,10 @@ const products = [
     
     // Pivo
     { id: 13, name: 'Bavaria limenka 0.5l', price: 135, category: 'pivo', image: 'img/pivo/Bavaria.png' },
-    { id: 14, name: 'Birra Moretti limenka 0.5l', price: 99, category: 'pivo', image: 'img/pivo/Birra 05.png' },
+    { id: 14, name: 'Birra Moretti limenka 0.5l', price: 99, category: 'pivo', image: 'img/pivo/birra 05.png' },
     { id: 15, name: 'Budweiser limenka 0.5l', price: 139, category: 'pivo', image: 'img/pivo/Budweiser.png' },
     { id: 16, name: 'Carlsberg limenka 0.5l', price: 135, category: 'pivo', image: 'img/pivo/Carlsberg 05.png' },
-    { id: 17, name: 'Heineken limenka 0.5l', price: 135, category: 'pivo', image: 'img/pivo/Heineken 05.png' },
+    { id: 17, name: 'Heineken limenka 0.5l', price: 135, category: 'pivo', image: 'img/pivo/heineken 05.png' },
     { id: 18, name: 'Heineken flasica 0.25l', price: 140, category: 'pivo', image: 'img/pivo/Heineken 025.png' },
     { id: 19, name: 'Lav Premium limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/Lav Premium.png' },
     { id: 20, name: 'Niksicko Tamno limenka 0.5l', price: 110, category: 'pivo', image: 'img/pivo/Niksicko tamno.png' },
@@ -31,6 +31,7 @@ const products = [
     { id: 25, name: 'Tuborg limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/tuborg 05.png' },
     { id: 26, name: 'Amstel limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/amstel 05.png' },
     { id: 27, name: 'Blanc limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/Blanc 05.png' },
+    { id: 28, name: 'Stella Artois limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/stella 05.png' },
 
     // Ostalo
     { id: 100, name: 'Jagermeister 0.7l', price: 2649, category: 'jeger', image: 'img/ostalo/Jagermeister 07.png' },
