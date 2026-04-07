@@ -11,6 +11,12 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="AlcoGo">
     <meta property="og:description" content="AlcoGo - Vaš partner za alkoholna pića i usluge">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
     
     <title>AlcoGo - Vaš partner za alkoholna pića</title>
     <!-- Google Fonts -->
@@ -62,7 +68,7 @@
                         </li>
                     </ul>
                     <div class="nav__cta">
-                        <a href="#naruci" class="btn btn--primary">NARUCI SADA</a>
+                        <a href="katalog.html?openCart=true" class="btn btn--primary">NARUCI SADA</a>
                     </div>
                     <div class="nav__apps">
                         <a href="#" class="nav__app-link" onclick="showAppPopup(event)">
@@ -112,7 +118,7 @@
             <div class="products-carousel__track" id="carouselTrack">
                 <!-- Box 1 - Absolut Vodka -->
                 <div class="katalog-product" data-category="vodka">
-                    <img src="img/absolut-vodka.png" alt="Absolut Vodka" class="katalog-product__image">
+                    <img src="img/vodka/Absolut 0.7L.webp" alt="Absolut Vodka" class="katalog-product__image">
                     <div class="katalog-product__info">
                         <span class="katalog-product__category">vodka</span>
                         <h3 class="katalog-product__name">Absolut Vodka</h3>
@@ -122,7 +128,7 @@
                 </div>
                 <!-- Box 2 - Jack Daniels -->
                 <div class="katalog-product" data-category="viski">
-                    <img src="img/absolut-vodka.png" alt="Jack Daniels" class="katalog-product__image">
+                    <img src="img/viski/jack 07.webp" alt="Jack Daniels" class="katalog-product__image">
                     <div class="katalog-product__info">
                         <span class="katalog-product__category">viski</span>
                         <h3 class="katalog-product__name">Jack Daniels</h3>
@@ -132,27 +138,27 @@
                 </div>
                 <!-- Box 3 - Jelen Pivo -->
                 <div class="katalog-product" data-category="pivo">
-                    <img src="img/absolut-vodka.png" alt="Jelen Pivo" class="katalog-product__image">
+                    <img src="img/pivo/Heineken 025.png" alt="Jelen Pivo" class="katalog-product__image">
                     <div class="katalog-product__info">
                         <span class="katalog-product__category">pivo</span>
-                        <h3 class="katalog-product__name">Jelen Pivo</h3>
+                        <h3 class="katalog-product__name">Heineken flasica 0.25l</h3>
                         <p class="katalog-product__price">RSD120</p>
                         <button class="katalog-product__add-btn" onclick="addToCartFromHome(1)">Dodajte u korpu</button>
                     </div>
                 </div>
                 <!-- Box 4 - Crno Vino -->
-                <div class="katalog-product" data-category="vino">
-                    <img src="img/absolut-vodka.png" alt="Crno Vino" class="katalog-product__image">
+                <div class="katalog-product" data-category="vodka">
+                    <img src="img/vodka/greygoose.png" alt="Grey Goose" class="katalog-product__image">
                     <div class="katalog-product__info">
-                        <span class="katalog-product__category">vino</span>
-                        <h3 class="katalog-product__name">Crno Vino</h3>
-                        <p class="katalog-product__price">RSD800</p>
+                        <span class="katalog-product__category">vodka</span>
+                        <h3 class="katalog-product__name">Grey Goose</h3>
+                        <p class="katalog-product__price">RSD5499</p>
                         <button class="katalog-product__add-btn" onclick="addToCartFromHome(10)">Dodajte u korpu</button>
                     </div>
                 </div>
                 <!-- Box 5 - Coca Cola -->
                 <div class="katalog-product" data-category="sokovi">
-                    <img src="img/absolut-vodka.png" alt="Coca Cola" class="katalog-product__image">
+                    <img src="img/sokovi/coca cola.png" alt="Coca Cola" class="katalog-product__image">
                     <div class="katalog-product__info">
                         <span class="katalog-product__category">sokovi</span>
                         <h3 class="katalog-product__name">Coca Cola</h3>
@@ -171,7 +177,7 @@
                     </div>
                 </div>
                 <div class="katalog-product" data-category="viski">
-                    <img src="img/absolut-vodka.png" alt="Jack Daniels" class="katalog-product__image">
+                    <img src="img/viski/jack 07.webp" alt="Jack Daniels" class="katalog-product__image">
                     <div class="katalog-product__info">
                         <span class="katalog-product__category">viski</span>
                         <h3 class="katalog-product__name">Jack Daniels</h3>
@@ -180,7 +186,7 @@
                     </div>
                 </div>
                 <div class="katalog-product" data-category="pivo">
-                    <img src="img/absolut-vodka.png" alt="Jelen Pivo" class="katalog-product__image">
+                    <img src="img/pivo/Heineken 025.png" alt="Jelen Pivo" class="katalog-product__image">
                     <div class="katalog-product__info">
                         <span class="katalog-product__category">pivo</span>
                         <h3 class="katalog-product__name">Jelen Pivo</h3>
@@ -189,7 +195,7 @@
                     </div>
                 </div>
                 <div class="katalog-product" data-category="vino">
-                    <img src="img/absolut-vodka.png" alt="Crno Vino" class="katalog-product__image">
+                    <img src="img/vodka/greygoose.png" alt="Crno Vino" class="katalog-product__image">
                     <div class="katalog-product__info">
                         <span class="katalog-product__category">vino</span>
                         <h3 class="katalog-product__name">Crno Vino</h3>
@@ -198,7 +204,7 @@
                     </div>
                 </div>
                 <div class="katalog-product" data-category="sokovi">
-                    <img src="img/absolut-vodka.png" alt="Coca Cola" class="katalog-product__image">
+                    <img src="img/sokovi/coca cola.png" alt="Coca Cola" class="katalog-product__image">
                     <div class="katalog-product__info">
                         <span class="katalog-product__category">sokovi</span>
                         <h3 class="katalog-product__name">Coca Cola</h3>
@@ -301,7 +307,7 @@
                 <!-- Recenzija 1 -->
                 <div class="review-card">
                     <div class="review-card__image">
-                        <img src="img/mojprofil.png" alt="Anonimno" class="review-card__img" id="reviewImg1">
+                        <img src="img/Vuk.jpg" alt="Vuk" class="review-card__img" id="reviewImg1">
                     </div>
                     <div class="review-card__content">
                         <h3 class="review-card__name">Vuk</h3>
@@ -329,7 +335,7 @@
                 <!-- Recenzija 3 -->
                 <div class="review-card">
                     <div class="review-card__image">
-                        <img src="img/mojprofil.png" alt="Anonimno" class="review-card__img" id="reviewImg3">
+                        <img src="img/Nemanja.png" alt="Nemanja" class="review-card__img" id="reviewImg3">
                     </div>
                     <div class="review-card__content">
                         <h3 class="review-card__name">Nemanja</h3>
