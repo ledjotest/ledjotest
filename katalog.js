@@ -30,7 +30,7 @@ const products = [
     { id: 22, name: 'Zajecarsko limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/Zajecarsko 05.png' },
     { id: 25, name: 'Tuborg limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/tuborg 05.png' },
     { id: 26, name: 'Amstel limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/amstel 05.png' },
-    { id: 27, name: 'Blanc limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/blanc 05.png' },
+    { id: 27, name: 'Blanc limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/Blanc 05.png' },
 
     // Ostalo
     { id: 100, name: 'Jagermeister 0.7l', price: 2649, category: 'jeger', image: 'img/ostalo/Jagermeister 07.png' },
