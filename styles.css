@@ -443,8 +443,8 @@ body {
     position: relative;
 }
 
-/* Mobile hero background */
-@media (max-width: 767px) {
+/* Mobile + tablet hero background */
+@media (max-width: 1199px) {
     .hero {
         background-image: url('img/hero-pozadinafon.png');
     }
