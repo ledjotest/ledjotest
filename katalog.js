@@ -52,6 +52,45 @@ function setMinOrderNoticeVisible(isVisible) {
     notice.classList.toggle('hidden', !isVisible);
 }
 
+function setEmailSendNotice(message) {
+    const notice = document.getElementById('emailSendNotice');
+    if (!notice) return;
+    if (!message) {
+        notice.textContent = '';
+        notice.classList.add('hidden');
+        return;
+    }
+    notice.textContent = message;
+    notice.classList.remove('hidden');
+}
+
+function formatItemsForEmail(items) {
+    return items
+        .map(item => `${item.name} x${item.quantity} — RSD${item.price} (RSD${item.lineTotal})`)
+        .join('\n');
+}
+
+async function sendOrderEmail({ name, phone, address, apartment, floor, items, subtotal, deliveryFee, total }) {
+    const cfg = window.EMAILJS_CONFIG;
+    if (!window.emailjs || !cfg?.serviceId || !cfg?.templateId) {
+        throw new Error('EmailJS nije podešen.');
+    }
+
+    const params = {
+        customer_name: name,
+        customer_phone: phone,
+        customer_address: address,
+        customer_apartment: apartment,
+        customer_floor: floor,
+        order_subtotal_rsd: String(subtotal),
+        order_delivery_rsd: String(deliveryFee),
+        order_total_rsd: String(total),
+        order_items: formatItemsForEmail(items)
+    };
+
+    return window.emailjs.send(cfg.serviceId, cfg.templateId, params);
+}
+
 function openCartOverlay() {
     const cartOverlay = document.getElementById('cartOverlay');
     if (cartOverlay) {
@@ -265,6 +304,7 @@ function updateCart() {
     renderCart();
     saveCart();
     setMinOrderNoticeVisible(false);
+    setEmailSendNotice('');
 }
 
 // Update korpa ikonica
@@ -385,6 +425,8 @@ function setupCart() {
     const nameInput = document.getElementById('customerName');
     const phoneInput = document.getElementById('customerPhone');
     const addressInput = document.getElementById('customerAddress');
+    const apartmentInput = document.getElementById('customerApartment');
+    const floorInput = document.getElementById('customerFloor');
     const agreementInput = document.getElementById('cartAgreement');
     
     if (nameInput) {
@@ -418,6 +460,20 @@ function setupCart() {
             document.getElementById('errorAddress').textContent = '';
         });
     }
+
+    if (apartmentInput) {
+        apartmentInput.addEventListener('input', function() {
+            this.classList.remove('error');
+            document.getElementById('errorApartment').textContent = '';
+        });
+    }
+
+    if (floorInput) {
+        floorInput.addEventListener('input', function() {
+            this.classList.remove('error');
+            document.getElementById('errorFloor').textContent = '';
+        });
+    }
     
     if (agreementInput) {
         agreementInput.addEventListener('change', function() {
@@ -444,7 +500,8 @@ function showCartNotification() {
 }
 
 // Poručivanje
-function handleOrder() {
+async function handleOrder() {
+    const orderBtn = document.getElementById('orderBtn');
     const nameInput = document.getElementById('customerName');
     const phoneInput = document.getElementById('customerPhone');
     const addressInput = document.getElementById('customerAddress');
@@ -462,6 +519,7 @@ function handleOrder() {
     // Reset error stanja
     clearErrors();
     setMinOrderNoticeVisible(false);
+    setEmailSendNotice('');
     
     let hasErrors = false;
     
@@ -536,6 +594,35 @@ function handleOrder() {
         total,
         createdAt: new Date().toISOString()
     };
+
+    if (orderBtn) {
+        orderBtn.disabled = true;
+        orderBtn.style.opacity = '0.7';
+        orderBtn.style.cursor = 'not-allowed';
+    }
+
+    try {
+        await sendOrderEmail({
+            name,
+            phone,
+            address,
+            apartment,
+            floor,
+            items: orderData.items,
+            subtotal,
+            deliveryFee,
+            total
+        });
+    } catch (e) {
+        console.error('EmailJS send failed', e);
+        setEmailSendNotice('Greška pri slanju porudžbine. Pokušajte ponovo.');
+        if (orderBtn) {
+            orderBtn.disabled = false;
+            orderBtn.style.opacity = '';
+            orderBtn.style.cursor = '';
+        }
+        return;
+    }
     
     try {
         sessionStorage.setItem('alcogo_last_order', JSON.stringify(orderData));
@@ -555,6 +642,7 @@ function handleOrder() {
     document.body.style.overflow = '';
     clearErrors();
     setMinOrderNoticeVisible(false);
+    setEmailSendNotice('');
     
     // Prelazak na stranicu zahvalnosti
     window.location.href = 'hvala.html';
@@ -601,4 +689,3 @@ function loadCart() {
         cart = JSON.parse(saved);
     }
 }
-
