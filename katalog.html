@@ -207,6 +207,7 @@
                                 <span>Prihvatam <a href="uslovi-koriscenja.html" target="_blank" style="color: var(--color-primary); text-decoration: underline;">uslove korišćenja</a> i garantujem da sam punoletan/punoletna (18+).*</span>
                             </label>
                         </div>
+                        <div class="cart-form__notice hidden" id="emailSendNotice"></div>
                         <div class="cart-form__notice hidden" id="minOrderNotice">Minimalna porudžbina: RSD1000</div>
                         <button type="button" class="btn btn--primary btn--full" id="orderBtn">PORUČI ODMAH</button>
                     </div>
@@ -264,6 +265,18 @@
         </div>
     </footer>
 
+    <!-- EmailJS (send order email) -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        window.EMAILJS_CONFIG = {
+            serviceId: 'service_mny07cm',
+            templateId: 'template_qgo5kzt',
+            publicKey: '-mP6Rtk7BmSa0pvH9'
+        };
+        if (window.emailjs && window.EMAILJS_CONFIG?.publicKey) {
+            window.emailjs.init({ publicKey: window.EMAILJS_CONFIG.publicKey });
+        }
+    </script>
     <script src="katalog.js"></script>
     <script>
         // Postavljanje trenutne godine u copyright
