@@ -443,6 +443,20 @@ body {
     position: relative;
 }
 
+/* Mobile hero background */
+@media (max-width: 767px) {
+    .hero {
+        background-image: url('img/hero-pozadinafon.png');
+    }
+}
+
+/* Desktop hero: stretch background to full width */
+@media (min-width: 768px) {
+    .hero {
+        background-size: 100% 100%;
+    }
+}
+
 .hero__content {
     text-align: center;
     position: relative;
