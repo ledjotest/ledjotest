@@ -1,29 +1,41 @@
 // Proizvodi podaci
 const products = [
-    // Pivo
-    { id: 1, name: 'Jelen Pivo', price: 120, category: 'pivo', image: 'img/absolut-vodka.png' },
-    { id: 2, name: 'Lav Pivo', price: 130, category: 'pivo', image: 'img/absolut-vodka.png' },
-    { id: 3, name: 'Zajecarsko Pivo', price: 110, category: 'pivo', image: 'img/absolut-vodka.png' },
-    
     // Viski
-    { id: 4, name: 'Jack Daniels', price: 3500, category: 'viski', image: 'img/absolut-vodka.png' },
-    { id: 5, name: 'Johnnie Walker', price: 4200, category: 'viski', image: 'img/absolut-vodka.png' },
-    { id: 6, name: 'Jameson', price: 3800, category: 'viski', image: 'img/absolut-vodka.png' },
+    { id: 1, name: 'Johnnie Walker Black Label 0.7l', price: 3499, category: 'viski', image: 'img/viski/black 07.webp' },
+    { id: 3, name: 'Chivas Regal 12 y.o. 0.7l', price: 3699, category: 'viski', image: 'img/viski/chivas regal 12.webp' },
+    { id: 4, name: 'Jack Daniels 0.7l', price: 2999, category: 'viski', image: 'img/viski/jack 07.webp' },
+    { id: 23, name: 'Jack Daniels 1l', price: 3499, category: 'viski', image: 'img/viski/jack 1l.webp' },
+    { id: 5, name: 'Jameson 1l', price: 3599, category: 'viski', image: 'img/viski/Jameson 1.png' },
+    { id: 6, name: 'Jameson 0.7l', price: 2799, category: 'viski', image: 'img/viski/Jameson 07.png' },
+    { id: 7, name: 'Johnnie Walker Red Label 0.7l', price: 1599, category: 'viski', image: 'img/viski/johnnie 07.webp' },
+    { id: 24, name: 'Johnnie Walker Red Label 1l', price: 2499, category: 'viski', image: 'img/viski/johnnie 1l.webp' },
     
     // Vodka
-    { id: 7, name: 'Absolut Vodka', price: 1799, category: 'vodka', image: 'img/absolut-vodka.png' },
-    { id: 8, name: 'Smirnoff', price: 1600, category: 'vodka', image: 'img/absolut-vodka.png' },
-    { id: 9, name: 'Belvedere', price: 4500, category: 'vodka', image: 'img/absolut-vodka.png' },
+    { id: 8, name: 'Absolut 1l', price: 2649, category: 'vodka', image: 'img/vodka/Absolut 1L.webp' },
+    { id: 9, name: 'Absolut 0.7l', price: 1749, category: 'vodka', image: 'img/vodka/Absolut 0.7L.webp' },
+    { id: 10, name: 'Belvedere 0.7l', price: 5499, category: 'vodka', image: 'img/vodka/belvedere.png' },
+    { id: 11, name: 'Grey Goose 0.7l', price: 5499, category: 'vodka', image: 'img/vodka/greygoose.png' },
+    { id: 12, name: 'Finlandia 0.7l', price: 1999, category: 'vodka', image: 'img/vodka/Finlandia 07.png' },
     
-    // Vino
-    { id: 10, name: 'Crno Vino', price: 800, category: 'vino', image: 'img/absolut-vodka.png' },
-    { id: 11, name: 'Belo Vino', price: 750, category: 'vino', image: 'img/absolut-vodka.png' },
-    { id: 12, name: 'Rose Vino', price: 850, category: 'vino', image: 'img/absolut-vodka.png' },
-    
-    // Sokovi
-    { id: 13, name: 'Coca Cola', price: 150, category: 'sokovi', image: 'img/absolut-vodka.png' },
-    { id: 14, name: 'Fanta', price: 150, category: 'sokovi', image: 'img/absolut-vodka.png' },
-    { id: 15, name: 'Sprite', price: 150, category: 'sokovi', image: 'img/absolut-vodka.png' },
+    // Pivo
+    { id: 13, name: 'Bavaria limenka 0.5l', price: 135, category: 'pivo', image: 'img/pivo/Bavaria.png' },
+    { id: 14, name: 'Birra Moretti limenka 0.5l', price: 99, category: 'pivo', image: 'img/pivo/Birra 05.png' },
+    { id: 15, name: 'Budweiser limenka 0.5l', price: 139, category: 'pivo', image: 'img/pivo/Budweiser.png' },
+    { id: 16, name: 'Carlsberg limenka 0.5l', price: 135, category: 'pivo', image: 'img/pivo/Carlsberg 05.png' },
+    { id: 17, name: 'Heineken limenka 0.5l', price: 135, category: 'pivo', image: 'img/pivo/Heineken 05.png' },
+    { id: 18, name: 'Heineken flasica 0.25l', price: 140, category: 'pivo', image: 'img/pivo/Heineken 025.png' },
+    { id: 19, name: 'Lav Premium limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/Lav Premium.png' },
+    { id: 20, name: 'Niksicko Tamno limenka 0.5l', price: 110, category: 'pivo', image: 'img/pivo/Niksicko tamno.png' },
+    { id: 21, name: 'Niksicko Svetlo limenka 0.5l', price: 99, category: 'pivo', image: 'img/pivo/Niksicko 05.png' },
+    { id: 22, name: 'Zajecarsko limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/Zajecarsko 05.png' },
+    { id: 25, name: 'Tuborg limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/tuborg 05.png' },
+    { id: 26, name: 'Amstel limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/amstel 05.png' },
+    { id: 27, name: 'Blanc limenka 0.5l', price: 95, category: 'pivo', image: 'img/pivo/blanc 05.png' },
+
+    // Ostalo
+    { id: 100, name: 'Jagermeister 0.7l', price: 2649, category: 'jeger', image: 'img/ostalo/Jagermeister 07.png' },
+    { id: 101, name: 'Beefeater pink 0.7l', price: 1749, category: 'gin', image: 'img/ostalo/Beefeater pink.png' },
+    { id: 102, name: 'Beefeater 0.7l', price: 1799, category: 'gin', image: 'img/ostalo/beefeater 07.webp' },
 ];
 
 // Korpa
