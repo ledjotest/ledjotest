@@ -45,6 +45,8 @@ let selectedCategory = null; // Single select - samo jedna kategorija
 let currentPriceMax = 10000;
 let currentSort = 'name-asc';
 const MIN_ORDER_RSD = 1000;
+/** Kad je true, porudžbine ne prolaze — samo poruka u korpi. */
+const ORDERS_COMING_SOON = true;
 
 function setMinOrderNoticeVisible(isVisible) {
     const notice = document.getElementById('minOrderNotice');
@@ -52,12 +54,15 @@ function setMinOrderNoticeVisible(isVisible) {
     notice.classList.toggle('hidden', !isVisible);
 }
 
-function setEmailSendNotice(message) {
+function setEmailSendNotice(message, options = {}) {
     const notice = document.getElementById('emailSendNotice');
     if (!notice) return;
+    const comingSoon = !!options.comingSoon;
+    notice.classList.toggle('cart-form__notice--soon', comingSoon);
     if (!message) {
         notice.textContent = '';
         notice.classList.add('hidden');
+        notice.classList.remove('cart-form__notice--soon');
         return;
     }
     notice.textContent = message;
@@ -501,6 +506,13 @@ function showCartNotification() {
 
 // Poručivanje
 async function handleOrder() {
+    if (ORDERS_COMING_SOON) {
+        clearErrors();
+        setMinOrderNoticeVisible(false);
+        setEmailSendNotice('USKORO KRECEMO SA RADOM', { comingSoon: true });
+        return;
+    }
+
     const orderBtn = document.getElementById('orderBtn');
     const nameInput = document.getElementById('customerName');
     const phoneInput = document.getElementById('customerPhone');
