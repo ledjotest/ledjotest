@@ -189,12 +189,25 @@
                             <input type="text" id="customerAddress" class="cart-form__input" required>
                             <span class="cart-form__error" id="errorAddress"></span>
                         </div>
+                        <div class="cart-form__row">
+                            <div class="cart-form__group cart-form__group--half">
+                                <label for="customerApartment" class="cart-form__label">Broj stana *</label>
+                                <input type="text" id="customerApartment" class="cart-form__input" required>
+                                <span class="cart-form__error" id="errorApartment"></span>
+                            </div>
+                            <div class="cart-form__group cart-form__group--half">
+                                <label for="customerFloor" class="cart-form__label">Sprat</label>
+                                <input type="text" id="customerFloor" class="cart-form__input">
+                                <span class="cart-form__error" id="errorFloor"></span>
+                            </div>
+                        </div>
                         <div class="cart-form__group">
                             <label class="cart-form__checkbox-label">
                                 <input type="checkbox" id="cartAgreement" class="cart-form__checkbox" required>
                                 <span>Prihvatam <a href="uslovi-koriscenja.html" target="_blank" style="color: var(--color-primary); text-decoration: underline;">uslove korišćenja</a> i garantujem da sam punoletan/punoletna (18+).*</span>
                             </label>
                         </div>
+                        <div class="cart-form__notice hidden" id="minOrderNotice">Minimalna porudžbina: RSD1000</div>
                         <button type="button" class="btn btn--primary btn--full" id="orderBtn">PORUČI ODMAH</button>
                     </div>
                 </div>
